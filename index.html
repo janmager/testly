@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <title>testly.</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div class="home box">
+        <div class="center">
+            <h1>Witaj w testly.</h1>
+            <h2>Aplikacji do generowania sprawdzianów i kartkówek.</h2>
+            <div class="btn open-creator">
+                Otwórz kreator
+            </div>
+            <img src="img/logo-white.png" class="backgroundLogoImg">
+        </div>
+        <footer>
+            &copy; 2018 testly.
+        </footer>
+    </div>
+    <div class="box startCreatingFormBox">
+        <div class="formBox">
+            <div class="formHeader box">
+                <h3>Krok 1</h3>
+                <h4>Wybierz typ pracy</h4>
+            </div>
+            <!-- Wybór typu egzaminu -->
+            <div class="formInFormBox typeOfExam">
+                <div class="typeOfExamOption optionKart">Kartkówka</div>
+                <div class="typeOfExamOption">Sprawdzian</div>
+                <div class="typeOfExamOption">Wypracowanie</div>
+            </div>
+            <!-- Ustawienia wizaulne kartkowka -->
+            <form method="GET" class="kartModeForm box formViewOfDoc">
+                <div class="oneOptionForm">
+                    <h5>1. Rozmiar dokumentu</h5>
+                    <div class="borderH5"></div>
+                    <div class="checkboxesBox flexColumn" style="max-width: 80%;">
+                       <div class="labelBox">
+                            <label for="rozmiarKartki">Rozmiar kartki:</label>
+                            <select name="rozmiarKartki" class="nameRozmiarKartki">
+                                <option value="A5">A5</option>
+                                <option value="A4">A4</option>
+                            </select>
+                        </div> 
+                        <div class="labelBox">
+                            <label for="orientacja">Orientacja:</label>
+                            <select name="orientacja">
+                                <option value="pion">Pionowa</option>
+                                <option value="poziom">Pozioma</option>
+                            </select>
+                        </div> 
+                        <div class="labelBox flexRow">
+                            <label for="marginesy">Marginesy:</label>
+                            <select name="margines">
+                                <option value="marginMaly">Małe</option>
+                                <option value="umiarkowane">Umiarkowane</option>
+                                <option value="duze">Duże</option>
+                            </select>
+                        </div> 
+                    </div>
+                </div>
+                <div class="oneOptionForm">
+                    <h5>2. Pola w nagłówku</h5>
+                    <div class="borderH5"></div>
+                    <div class="checkboxesBox">
+                        <div class="labelBox">
+                            <input type="checkbox" name="imie">
+                            <label for="imie">Imie</label>
+                        </div>
+                        <div class="labelBox">
+                            <input type="checkbox" name="nazwisko">
+                            <label for="nazwisko">Nazwisko</label>
+                        </div>
+                        <div class="labelBox">
+                            <input type="checkbox" name="klasa">
+                            <label for="klasa">Klasa</label>
+                        </div>
+                        <div class="labelBox">
+                            <input type="checkbox" name="numer">
+                            <label for="numer">Numer z dziennika</label>
+                        </div>
+                        <div class="labelBox">
+                            <input type="checkbox" name="data">
+                            <label for="data">Data</label>
+                        </div>
+                        <div class="labelBox">
+                            <input type="checkbox" class="numberOfPoints" name="liczbaPunktow">
+                            <label for="liczbaPunktow">Liczba punktów</label>
+                        </div>
+                        <div class="extendedField pointsToHave">
+                            <label for="maxPointsKart">Max punktów: </label>
+                            <input type="number" name="maxPkt">
+                        </div>
+                    </div>
+                </div>
+                <div class="btnNext">
+                    <button type="submit" class="submitSecondStep">Następny krok</button>
+                </div>
+            </form>
+            <div class="stepViewer">
+                <div class="step1 step stepActive">1</div>
+                <div class="step2 step">2</div>
+                <div class="step3 step">3</div>
+                <div class="step4 step">4</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/openFormBox.js"></script>
+    <script src="js/selectGeneratorMode.js"></script>
+    <script src="js/ajaxGetFormValue.js"></script>
+  </body>
+</html>
