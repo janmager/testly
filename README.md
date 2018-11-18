@@ -1,14 +1,13 @@
 # testly.
-Application to generate and easily create exams and tests for lessons in school.
+Aplikacja do generowania sprawdzianów i kartkówek.
 
 # v.1.01
- - Finished landingpage (UI and working)
- - Added select of type of exam (step 1), without UI
- - Added form of selection of graphic design of exam (half, step 2)
-![Landing Page](https://raw.githubusercontent.com/janmager/testly/master/img-git/landing-page.jpg)
-![Landing Page](https://raw.githubusercontent.com/janmager/testly/master/img-git/landing-page.jpg)
+ - Skończony design i działanie landign page
+ - Dodany wybór formy sprawdzającej wiedzę (krok pierwszy), bez UI
+ - Dodany formularz do ustawień graficznych kartkówki (nieskończony, krok 2)
+![Krok 1 - wybór testu](https://raw.githubusercontent.com/janmager/testly/master/img-git/step1-1.png)
+![Krok 2 - usatwienia graficzne kartkówki](https://raw.githubusercontent.com/janmager/testly/master/img-git/step2-1.png)
 
- 
-## App project (precode)
+## Projekt aplikacji (przed kodowaniem)
 Landing Page
 ![Landing Page](https://raw.githubusercontent.com/janmager/testly/master/img-git/landing-page.jpg)
