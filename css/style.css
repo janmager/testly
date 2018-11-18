@@ -10,6 +10,7 @@ html{
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
+  /* margin: 50px 25px; */
 }
 .home{
   min-width: 100vw;
@@ -32,6 +33,9 @@ html{
   min-height: 100vh;
   background: #2c2b44;
   color: lightseagreen;
+}
+.formWriteQuestions{
+  display: none;
 }
 .kartModeForm{
   display: none;
@@ -122,6 +126,7 @@ html{
   border-radius: 20px;
   position: relative;
   flex-direction: column;
+  margin: 75px 20px;
 }
 .stepViewer{
   position: absolute;
@@ -142,19 +147,32 @@ h3{
 .typeOfExam{
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: center;
   flex-direction: row;
 }
 .typeOfExamOption{
   min-width: 80px;
-  min-height: 80px;
-  border-radius: 20px;
+  min-height: 40px;
+  border-radius: 40px;
   cursor: pointer;
-  background: rgba(0,0,0,0.2);
+  font-size: 18px;
+  background: transparent;
   display: flex;
+  border: 3px solid #2c2b44;
+  color: #2c2b44;
+  transition: 0.25s;
   justify-content: center;
   align-items: center;
-  padding: 15px 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  margin: 0px 20px;
+}
+.typeOfExamOption:hover{
+  transition: 0.25s;
+  background: #2c2b44;
+  border: 3px solid #2c2b44;
+  color: white;
 }
 .step{
   width: 30px;
@@ -162,14 +180,14 @@ h3{
   background: white;
   cursor: default;
   user-select: none;
-  color: black;
+  color: #2c2b44;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px 0px;
   font-size: 15px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid #2c2b44;
 }
 .btnNext{
  margin-top: 20px; 
@@ -192,9 +210,20 @@ h3{
   background: #2c2b44;
   color: white;
 }
+.otherStep2 input[type='radio']{
+  margin-top: 15px;
+}
+.labelBox input{
+  margin-left: 10px;
+  font-size: 16px;
+}
+.labelBox input[type='number']{
+  max-width: 65px;
+  text-align: center;
+}
 .stepActive{
-  background: black;
-  border: 2px solid black;
+  background: #2c2b44;
+  border: 2px solid white;
   color: white;
 }
 .formInFormBox{
@@ -253,4 +282,20 @@ footer{
 a{
   color: inherit;
   text-decoration: none;
+}
+.nextQuestion{
+  padding: 8px;
+  background: transparent;
+  color: #2f2d49;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 40px;
+  border: 2px solid #2f2d49;
+  cursor: pointer;
+}
+.nextQuestion:hover{
+  transition: 0.25s;
+  border: 2px solid #2f2d49;
+  background: #2f2d49;
+  color: white;
 }

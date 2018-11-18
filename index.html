@@ -30,7 +30,7 @@
             <div class="formInFormBox typeOfExam">
                 <div class="typeOfExamOption optionKart">Kartkówka</div>
                 <div class="typeOfExamOption">Sprawdzian</div>
-                <div class="typeOfExamOption">Wypracowanie</div>
+                <!-- <div class="typeOfExamOption">Wypracowanie</div> -->
             </div>
             <!-- Ustawienia wizaulne kartkowka -->
             <form method="GET" class="kartModeForm box formViewOfDoc">
@@ -96,9 +96,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="oneOptionForm">
+                    <h5>3. Inne</h5>
+                    <div class="borderH5"></div>
+                    <div class="checkboxesBox flexColumn otherStep2" style="max-width: 100%;">
+                       <div class="labelBox otherStep2">
+                            <label for="grupy">Ilość grup:</label>
+                            <input name="grupy" class="iloscGrup" type="number" min=1 max=5 value='1'>   
+                        </div>
+                        <div class="labelBox">
+                            <label for="typGrup">Pytania w grupach</label>
+                            <div class="radioInput">
+                                <input type="radio" name="typGrupy" value="teSame" required>
+                                <span>Takie same pytania (inna kolejność)</span>
+                            </div>
+                            <div class="radioInput">
+                                <input type="radio" name="typGrupy" value="inne">
+                                <span>Inne pytania w każdej grupie</span>
+                            </div>
+                            <div class="radioInput">
+                                <input type="radio" name="typGrupy" value="hybryda">
+                                <span>Pomieszana 1 i 2 opcja</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="btnNext">
                     <button type="submit" class="submitSecondStep">Następny krok</button>
                 </div>
+            </form>
+            <form method="GET" class="box formWriteQuestions">
+                <!-- GENEROWANIE FORMOW DLA PYTAN -->
             </form>
             <div class="stepViewer">
                 <div class="step1 step stepActive">1</div>
@@ -113,5 +141,6 @@
     <script src="js/openFormBox.js"></script>
     <script src="js/selectGeneratorMode.js"></script>
     <script src="js/ajaxGetFormValue.js"></script>
+    <script src="js/questionMaker.js"></script>
   </body>
 </html>
