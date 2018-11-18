@@ -10,4 +10,4 @@ Aplikacja do generowania sprawdzianów i kartkówek.
 
 ## Projekt aplikacji (przed kodowaniem)
 Landing Page
-![Landing Page](https://raw.githubusercontent.com/janmager/testly/master/img-git/landing-page.jpg)
+![Landing Page](https://raw.githubusercontent.com/janmager/testly/master/img-git/lp.jpg)
