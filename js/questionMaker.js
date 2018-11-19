@@ -9,9 +9,17 @@ function generateNextQuestion(){
             <h5 id='nextQuestionHeader"+n+"'>Pytanie numer "+n+"</h5>\
             <div class='borderH5'></div>\
         </div>\
-        <div class='makeQuestionField'>\
-            <label for='trescPytania"+n+"'>Treść pytania</label>\
-            <input type='text' name='trescPytania"+n+"'>\
+        <div class='chooseOpenOrClose'>\
+            <div class='chooseOpen"+n+" chooseOpen' onclick='chooseOpen("+n+")'>Pytanie otwarte</div>\
+            <div class='chooseClose"+n+" chooseClose' onclick='chooseClose("+n+")'>Pytanie zamknięte</div>\
+        </div>\
+        <div class='makeQuestionField openQuest openQuest"+n+"'>\
+            <label for='trescPytania"+n+"'>Treść pytania:</label>\
+            <input type='text' placeholder='Podaj treść pytania otwartego' name='trescPytania"+n+"'>\
+        </div>\
+        <div class='makeQuestionField closeQuest closeQuest"+n+"'>\
+            <label for='trescPytania"+n+"'>Treść pytania:</label>\
+            <input type='text' placeholder='Podaj treść pytania zamkniętego' name='trescPytania"+n+"'>\
         </div>\
         <div class='nextQuestion' onclick='clickedBtn()' id='nextQuestion"+n+"'>\
             Dodaj kolejne pytanie\
@@ -27,7 +35,18 @@ function generateNextQuestion(){
 }
 
 function clickedBtn(){
-    console.log("click working");
+    // console.log("click working");
     $("#nextQuestion"+temp).css({"display":"none"});
     generateNextQuestion();
 }
+
+function chooseOpen(x){
+    $(".openQuest"+x).css({"display":"flex"});
+    $(".closeQuest"+x).css({"display":"none"});
+}
+
+function chooseClose(x){
+    $(".openQuest"+x).css({"display":"none"});
+    $(".closeQuest"+x).css({"display":"flex"});
+}
+

@@ -36,6 +36,7 @@ html{
 }
 .formWriteQuestions{
   display: none;
+  width: 80%;
 }
 .kartModeForm{
   display: none;
@@ -298,4 +299,35 @@ a{
   border: 2px solid #2f2d49;
   background: #2f2d49;
   color: white;
+}
+.makeQuestionField{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+.makeQuestionField label{
+  width: auto;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 18px;
+}
+.makeQuestionField input{
+  width: 65%;
+  outline: none;
+  font-size: 18px;
+  padding: 5px;
+  border: 1px solid #2f2d49;
+  background: none;
+  color: #2f2d49;
+}
+.openQuest{
+  display: none;
+}
+.closeQuest{
+  display: none;
+}
+.chooseOpen, .chooseClose{
+  margin: 20px;
 }
