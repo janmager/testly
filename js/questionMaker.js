@@ -43,10 +43,14 @@ function clickedBtn(){
 function chooseOpen(x){
     $(".openQuest"+x).css({"display":"flex"});
     $(".closeQuest"+x).css({"display":"none"});
+    $(".chooseOpen"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
+    $(".chooseClose"+x).css({"background":"transparent","color":"#2f2d49"});
 }
 
 function chooseClose(x){
     $(".openQuest"+x).css({"display":"none"});
     $(".closeQuest"+x).css({"display":"flex"});
+    $(".chooseClose"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
+    $(".chooseOpen"+x).css({"background":"transparent","color":"#2f2d49"});
 }
 

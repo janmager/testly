@@ -329,5 +329,34 @@ a{
   display: none;
 }
 .chooseOpen, .chooseClose{
-  margin: 20px;
+  margin: 10px;
+}
+.chooseOpenOrClose{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.chooseOpenOrClose div{
+  padding: 8px 12px;
+  background: transparent;
+  color: #2f2d49;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #2f2d49;
+  cursor: pointer;
+  margin: 10px 10px;
+  text-align: center;
+}
+.chooseOpenOrClose div:hover{
+  transition: 0.25s;
+  border: 2px solid #2f2d49;
+  background: #2f2d49;
+  color: white;
+}
+.chooseOpenOrCloseActive{
+  transition: 0.25s;
+  border: 2px solid #2f2d49;
+  background: #2f2d49;
+  color: white;
 }

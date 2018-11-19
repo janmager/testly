@@ -1,6 +1,12 @@
 # testly.
 Aplikacja do generowania sprawdzianów i kartkówek.
 
+# v.1.03
+ - Dodanie opcji wyboru treści pytania (zamknięte lub otwarte)
+ - Poprawa oprawy graficznej kroku 3
+ 
+![Krok 3 - wybór zamknięte lub otwarte pytanie](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-2.png)
+
 # v.1.02
  - Poprawiona grafika kroku pierwszego, usunięcie opcji wypracowanie
  - Dokończenie pól w kroku drugim, zebranie danych to temp db
