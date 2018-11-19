@@ -1,6 +1,12 @@
 # testly.
 Aplikacja do generowania sprawdzianów i kartkówek.
 
+# v.1.04
+ - Dodanie opcji 'Liczba punktów do zdobycia'
+ - Wstawienie informacji odnośnie konieczności wyboru opcji
+ 
+![Krok 3 - liczba punktów do zdobycia](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-3.png)
+
 # v.1.03
  - Dodanie opcji wyboru treści pytania (zamknięte lub otwarte)
  - Poprawa oprawy graficznej kroku 3

@@ -300,6 +300,9 @@ a{
   background: #2f2d49;
   color: white;
 }
+.oneQuest{
+  width: 100%;
+}
 .makeQuestionField{
   display: flex;
   justify-content: center;
@@ -312,6 +315,11 @@ a{
   text-align: right;
   padding-right: 15px;
   font-size: 18px;
+}
+.makeQuestionField span{
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: -10px;
 }
 .makeQuestionField input{
   width: 65%;
@@ -359,4 +367,7 @@ a{
   border: 2px solid #2f2d49;
   background: #2f2d49;
   color: white;
+}
+.pointsToGet input{
+  max-width: 200px;
 }

@@ -13,13 +13,22 @@ function generateNextQuestion(){
             <div class='chooseOpen"+n+" chooseOpen' onclick='chooseOpen("+n+")'>Pytanie otwarte</div>\
             <div class='chooseClose"+n+" chooseClose' onclick='chooseClose("+n+")'>Pytanie zamknięte</div>\
         </div>\
-        <div class='makeQuestionField openQuest openQuest"+n+"'>\
-            <label for='trescPytania"+n+"'>Treść pytania:</label>\
-            <input type='text' placeholder='Podaj treść pytania otwartego' name='trescPytania"+n+"'>\
-        </div>\
-        <div class='makeQuestionField closeQuest closeQuest"+n+"'>\
-            <label for='trescPytania"+n+"'>Treść pytania:</label>\
-            <input type='text' placeholder='Podaj treść pytania zamkniętego' name='trescPytania"+n+"'>\
+        <div class='oneQuest oneQuest"+n+"'>\
+            <div class='makeQuestionField selectOption"+n+"'>\
+                <span>Wybierz opcję powyżej</span>\
+            </div>\
+            <div class='makeQuestionField openQuest openQuest"+n+"'>\
+                <label for='trescPytania"+n+"' name='openQuestContent+"+n+"'>Treść pytania:</label>\
+                <input type='text' placeholder='Podaj treść pytania otwartego' name='trescPytania"+n+"'>\
+            </div>\
+            <div class='makeQuestionField closeQuest closeQuest"+n+"'>\
+                <label for='trescPytania"+n+"' name='closeQuestContent+"+n+"'>Treść pytania:</label>\
+                <input type='text' placeholder='Podaj treść pytania zamkniętego' name='trescPytania"+n+"'>\
+            </div>\
+            <div class='makeQuestionField pointsToGet'>\
+                <label for='pointsToGetContent+"+n+"'>Liczba punktów do zdobycia</label>\
+                <input placeholder='np. 4.5' name='pointsToGetContent+"+n+"' type='number'>\
+            </div>\
         </div>\
         <div class='nextQuestion' onclick='clickedBtn()' id='nextQuestion"+n+"'>\
             Dodaj kolejne pytanie\
@@ -43,6 +52,7 @@ function clickedBtn(){
 function chooseOpen(x){
     $(".openQuest"+x).css({"display":"flex"});
     $(".closeQuest"+x).css({"display":"none"});
+    $(".selectOption"+x).css({"display":"none"});
     $(".chooseOpen"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
     $(".chooseClose"+x).css({"background":"transparent","color":"#2f2d49"});
 }
@@ -50,6 +60,7 @@ function chooseOpen(x){
 function chooseClose(x){
     $(".openQuest"+x).css({"display":"none"});
     $(".closeQuest"+x).css({"display":"flex"});
+    $(".selectOption"+x).css({"display":"none"});
     $(".chooseClose"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
     $(".chooseOpen"+x).css({"background":"transparent","color":"#2f2d49"});
 }
