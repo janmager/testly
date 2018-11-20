@@ -18,26 +18,30 @@ function generateNextQuestion(){
                 <span>Wybierz opcję powyżej</span>\
             </div>\
             <div class='makeQuestionField openQuest openQuest"+n+"'>\
-                <label for='trescPytania"+n+"' name='openQuestContent+"+n+"'>Treść pytania:</label>\
+                <label for='trescPytania"+n+"' name='openQuestContent"+n+"'>Treść pytania:</label>\
                 <input type='text' placeholder='Podaj treść pytania otwartego' name='trescPytania"+n+"'>\
             </div>\
             <div class='makeQuestionField closeQuest closeQuest"+n+"'>\
-                <label for='trescPytania"+n+"' name='closeQuestContent+"+n+"'>Treść pytania:</label>\
+                <label for='trescPytania"+n+"' name='closeQuestContent"+n+"'>Treść pytania:</label>\
                 <input type='text' placeholder='Podaj treść pytania zamkniętego' name='trescPytania"+n+"'>\
             </div>\
+            <div class='makeQuestionField rowsToHave'>\
+                <label for='rowsInQuestion"+n+"'>Liczba linijek na odpowiedź:</label>\
+                <input placeholder='np. 2' name='rowsInQuestion"+n+"' type='number' required>\
+            </div>\
+            <div class='makeQuestionField rowsToHave'>\
+                <label for='rowsInQuestion"+n+"'>Liczba linijek na odpowiedź:</label>\
+                <input placeholder='np. 2' name='rowsInQuestion"+n+"' type='number' required>\
+            </div>\
             <div class='makeQuestionField pointsToGet'>\
-                <label for='pointsToGetContent+"+n+"'>Liczba punktów do zdobycia</label>\
-                <input placeholder='np. 4.5' name='pointsToGetContent+"+n+"' type='number'>\
+                <label for='pointsToGetContent"+n+"'>Liczba punktów do zdobycia:</label>\
+                <input placeholder='np. 4.5' name='pointsToGetContent"+n+"' type='number' required>\
             </div>\
         </div>\
         <div class='nextQuestion' onclick='clickedBtn()' id='nextQuestion"+n+"'>\
             Dodaj kolejne pytanie\
         </div>\
         ");
-    // $(".formWriteQuestions").append("<h5 id='nextQuestionHeader"+n+"'>Pytanie no."+n+"</h5>");
-    // $(".formWriteQuestions").append("<div class='borderH5'></div>");
-    // $(".formWriteQuestions").append("</div>");
-    // $(".formWriteQuestions").append("<div class='nextQuestion' id='nextQuestion"+n+"'>Dodaj kolejne pytanie</div>");
     console.log("Dodano "+n+" pytanie");    
     temp = n;
     n++;
