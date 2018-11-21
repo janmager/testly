@@ -1,6 +1,11 @@
 # testly.
 Aplikacja do generowania sprawdzianów i kartkówek.
 
+# v.1.06
+ - Dodanie widoku ilości rodzielonych punktów w pytaniach
+ 
+![Krok 3 - rozdzielone punkty](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-7.png)
+
 # v.1.05
  - Dodanie opcji pytanie otwarte lub zamknięte w formularzu
  - Dodanie ilości linijek do wygenerowania przy wyborze pytania otwartego
