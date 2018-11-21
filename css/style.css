@@ -384,6 +384,15 @@ a{
   display: none;
   flex-direction: column;
 }
+.openAnswers input{
+  max-width: 300px;
+}
+.openAnswers input[type='checkbox']{
+  max-width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .odpowiedzForm{
   display: flex;
   justify-content: center;
@@ -391,4 +400,22 @@ a{
   flex-direction: row;
   width: 100%;
   margin: 10px 0px 10px 0px;
+}
+.formWriteQuestions button{
+  transition: 0.25s;
+  border: 2px solid #2f2d49;
+  background: #2f2d49;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  outline: none;
+}
+.formWriteQuestions button:hover{
+  transition: 0.25s;
+  border: 2px solid #2f2d49;
+  background: transparent;
+  color: #2f2d49;
 }

@@ -37,7 +37,7 @@ $(".formViewOfDoc").submit(function(){
         'Liczba punktow' : liczbaPunktow,
         'Max punktow' : maxPkt,
         'Ilosc grup' : $("[name=grupy]").val(),
-        'Pytania w grupach' : $("[name=typGrupy]").val()
+        'Pytania w grupach' : $("[name=typGrupy]:checked").val()
     }
     dataOfExam.push(data);
     console.log(dataOfExam);
