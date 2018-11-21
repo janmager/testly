@@ -371,6 +371,24 @@ a{
 .pointsToGet input{
   max-width: 200px;
 }
+.rowsToHave{
+  display: none;
+}
+.openAnswers{
+  display: none;
+}
 .rowsToHave input{
   max-width: 200px;
+}
+.openAnswers{
+  display: none;
+  flex-direction: column;
+}
+.odpowiedzForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
 }
