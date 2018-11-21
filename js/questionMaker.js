@@ -152,5 +152,12 @@ $(".formWriteQuestions").submit(function(e){
         questions.push(data);
     }
     console.log(questions);
+
+    $(".step3").removeClass("stepActive");
+    $(".step4").addClass("stepActive");
+    $(".formHeader h3").html("Krok 4");
+    $(".formHeader h4").html("Podgląd dokumentu");
+    $(".formWriteQuestions").css({"display":"none"});
+    $(".checkOutDoc").css({"display":"flex"});
 });
 

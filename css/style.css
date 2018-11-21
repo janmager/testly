@@ -24,12 +24,12 @@ html{
   background-size: cover;
   color: white;
   position: relative;
-  display: none;
+  /* display: none; */
 }
 .startCreatingFormBox{
-  z-index: 99;
-  display: flex;
-  /* display: none; */
+  /* z-index: 99; */
+  /* display: flex; */
+  display: none;
   min-height: 100vh;
   background: #2c2b44;
   color: lightseagreen;
@@ -418,4 +418,7 @@ a{
   border: 2px solid #2f2d49;
   background: transparent;
   color: #2f2d49;
+}
+.checkOutDoc{
+  display: none;
 }
