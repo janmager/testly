@@ -1,6 +1,16 @@
 # testly.
 Aplikacja do generowania sprawdzianów i kartkówek.
 
+# v.1.05
+ - Dodanie opcji pytanie otwarte lub zamknięte w formularzu
+ - Dodanie ilości linijek do wygenerowania przy wyborze pytania otwartego
+ - Dodanie pól do wprowadzenia odpowiedzi przy wyborze pytania zamkniętego
+ - Dodanie checkboxów do wybrania poprawnej odpowiedzi w pytaniu zamkniętym
+ 
+![Krok 3 - wpisywanie odpowiedzi i wybieranie poprawnej](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-4.png)
+
+![Krok 3 - ilość linijek do zostawienia](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-5.png)
+
 # v.1.04
  - Dodanie opcji 'Liczba punktów do zdobycia'
  - Wstawienie informacji odnośnie konieczności wyboru opcji
