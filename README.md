@@ -9,7 +9,7 @@ Aplikacja do generowania sprawdzianów i kartkówek.
  
 ![Krok 3 - wpisywanie odpowiedzi i wybieranie poprawnej](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-4.png)
 
-![Krok 3 - ilość linijek do zostawienia](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-5.png)
+![Krok 3 - ilość linijek do zostawienia](https://raw.githubusercontent.com/janmager/testly/master/img-git/step3-6.png)
 
 # v.1.04
  - Dodanie opcji 'Liczba punktów do zdobycia'
