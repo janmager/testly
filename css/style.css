@@ -468,3 +468,10 @@ a{
   margin: 20px 0px;
   width: 60%;
 }
+.checkOutDoc h5{
+  width: 100%;
+  font-size: 22px;
+  margin-top: 0px;
+  opacity: 0.8;
+  text-align: center
+}

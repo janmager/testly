@@ -254,7 +254,6 @@ function createRaport(){
             Orientacja: "+dataOfExam[0].Orientacja+"<br>\
             Marginesy: "+dataOfExam[0].Marginesy+"<br>\
         </div>\
-        <div class='linijka'></div>\
         <div class='raportBlock'>\
             Imię: "+raportImie+"<br>\
             Nazwisko: "+raportNazwisko+"<br>\
@@ -263,23 +262,32 @@ function createRaport(){
             Numer z dziennika: "+raportNumer+"<br>\
             Liczba puntków: "+raportPkt+"<br>\
         </div>\
+        <div class='raportBlock'>\
+            Ilość grup: "+dataOfExam[0].IloscGrup+"<br>\
+            Pytania w grupach: "+dataOfExam[0].PytaniaWGrupach+"<br>\
+        </div>\
     ");
     for(var i=1; i<n; i++){
-        // if(questions[i].questionClose != undefined || questions[i].questionClose != ""){
-        //     $(".checkOutDoc").append("\
-        //     <div class=''>\
-        //         "+questions[i].questionClose+"\
-        //     </div>\
-        // ");
-        // }
-        // else{
-        //     $(".checkOutDoc").append("\
-        //     <div class=''>\
-        //         "+questions[i].questionOpen+"\
-        //     </div>\
-        // ");
-        // }
-        console.log(questions[i-1]);
+        var temp = i-1;
+        $(".checkOutDoc").append("\
+            <div class='linijka'></div>\
+            <h5>Pytanie "+i+"</h5>\
+        ");
+        if(questions[temp].questionClose != undefined || questions[temp].questionClose != ""){
+            $(".checkOutDoc").append("\
+            <div class=''>\
+                "+questions[temp].questionClose+"\
+            </div>\
+        ");
+        }
+        else{
+            $(".checkOutDoc").append("\
+            <div class=''>\
+                "+questions[temp].questionOpen+"\
+            </div>\
+        ");
+        }
+        console.log(questions[temp-1]);
     }
 }
 
