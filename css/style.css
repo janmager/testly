@@ -449,3 +449,19 @@ a{
 .checkOutDoc{
   display: none;
 }
+.raportBlock{
+  text-align: center;
+  font-size: 18px;
+  line-height: 200%;
+  width: 100%;
+  max-width: 300px;
+}
+.checkOutDoc{
+  width: 100%;
+}
+.linijka{
+  height: 1px;
+  background: black;
+  margin: 20px 0px;
+  width: 60%;
+}

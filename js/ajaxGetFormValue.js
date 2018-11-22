@@ -5,10 +5,12 @@ var numer = false;
 var liczbaPunktow = false;
 var dataObecna = false;
 var maxPkt = null;
+var dataOfExam = [];
 
-$(".formViewOfDoc").submit(function(){
+$(".formViewOfDoc").submit(function(e){
+    e.preventDefault();
 
-    var dataOfExam = [];
+    dataOfExam = [];
 
     // console.log("Rozmiar: ");
     // GET VALUE OF INPUT FROM NAME
@@ -24,10 +26,13 @@ $(".formViewOfDoc").submit(function(){
         maxPkt = $("[name=maxPkt]").val();
         $(".pointsLeftBox").css({"display":"flex"});
     }
+    else{
+        maxPkt = 9999;
+    }
     
 
     var data = {    
-        'Rozmiar kartki' : $("[name=rozmiarKartki]").val(),
+        'RozmiarKartki' : $("[name=rozmiarKartki]").val(),
         'Orientacja' : $("[name=orientacja]").val(),
         'Marginesy' : $("[name=margines]").val(),
         'Imie' : imie,
@@ -52,7 +57,6 @@ $(".formViewOfDoc").submit(function(){
 
     generateNextQuestion();
     updatePoints();
-    return false;
 });
 
 var n = 1;
@@ -149,71 +153,74 @@ function chooseClose(x){
     $(".chooseOpen"+x).css({"background":"transparent","color":"#2f2d49"});
 }
 
+var questions = [];
+
 $(".formWriteQuestions").submit(function(e){
     e.preventDefault();
-
-    var questions = [];
-    for(var i=1;i<n;i++){
-        var tOtwarta = $("[name=trescPytaniaOtwartego"+i+"]").val();
-        var tZamknieta = $("[name=trescPytaniaZamknietego"+i+"]").val();
-        // console.log(tOtwarta);
-        if(tOtwarta != undefined && tOtwarta != ""){
-            var q = $("[name=trescPytaniaOtwartego"+i+"]").val(); // pytanie otwarte
-            var l = $("[name=rowsInQuestion"+i+"]").val(); // liczba linijek na odpowiedz
-            var p = $("[name=pointsToGetContent"+i+"]").val(); // liczba punktow do zdobycia
-            var data = {
-                questionOpen: q,
-                answerOpen: l,
-                maxPointsOpen: p
+    if(updatePoints()>maxPkt) alert("Za duzo przydzielonych punktów");
+    else{
+        questions = [];
+        for(var i=1;i<n;i++){
+            var tOtwarta = $("[name=trescPytaniaOtwartego"+i+"]").val();
+            var tZamknieta = $("[name=trescPytaniaZamknietego"+i+"]").val();
+            // console.log(tOtwarta);
+            if(tOtwarta != undefined && tOtwarta != ""){
+                var q = $("[name=trescPytaniaOtwartego"+i+"]").val(); // pytanie otwarte
+                var l = $("[name=rowsInQuestion"+i+"]").val(); // liczba linijek na odpowiedz
+                var p = $("[name=pointsToGetContent"+i+"]").val(); // liczba punktow do zdobycia
+                var data = {
+                    questionOpen: q,
+                    answerOpen: l,
+                    maxPoints: p
+                }
             }
-        }
-        if(tZamknieta != undefined && tZamknieta != ""){
-            var cA = false;
-            var cB = false;
-            var cC = false;
-            var cD = false;
-            var q = $("[name=trescPytaniaZamknietego"+i+"]").val(); // pytanie otwarte
-            if($("[name=answerA"+i+"]").val() != undefined || $("[name=answerA"+i+"]").val() != "") {
-                var a = $("[name=answerA"+i+"]").val();
-            } // odp A
-            if($("[name=answerB"+i+"]").val() != undefined || $("[name=answerB"+i+"]").val() != "") {
-                var b = $("[name=answerB"+i+"]").val();
-            } // odp B
-            if($("[name=answerC"+i+"]").val() != undefined || $("[name=answerC"+i+"]").val() != "") {
-                var c = $("[name=answerC"+i+"]").val();
-            } // odp C
-            if($("[name=answerD"+i+"]").val() != undefined || $("[name=answerD"+i+"]").val() != "") {
-                var d = $("[name=answerD"+i+"]").val();
-            } // odp D
-            if($("[name=correctA"+i+"]").is(":checked")) cA = true;
-            if($("[name=correctB"+i+"]").is(":checked")) cB = true;
-            if($("[name=correctC"+i+"]").is(":checked")) cC = true;
-            if($("[name=correctD"+i+"]").is(":checked")) cD = true;
-            var p = $("[name=pointsToGetContent"+i+"]").val(); // liczba punktow do zdobycia
-            var data = {
-                questionClose: q,
-                answerA: a,
-                answerB: b,
-                answerC: c,
-                answerD: d,
-                maxPoints: p,
-                correctA: cA,
-                correctB: cB,
-                correctC: cC,
-                correctD: cD
+            if(tZamknieta != undefined && tZamknieta != ""){
+                var cA = false;
+                var cB = false;
+                var cC = false;
+                var cD = false;
+                var q = $("[name=trescPytaniaZamknietego"+i+"]").val(); // pytanie otwarte
+                if($("[name=answerA"+i+"]").val() != undefined || $("[name=answerA"+i+"]").val() != "") {
+                    var a = $("[name=answerA"+i+"]").val();
+                } // odp A
+                if($("[name=answerB"+i+"]").val() != undefined || $("[name=answerB"+i+"]").val() != "") {
+                    var b = $("[name=answerB"+i+"]").val();
+                } // odp B
+                if($("[name=answerC"+i+"]").val() != undefined || $("[name=answerC"+i+"]").val() != "") {
+                    var c = $("[name=answerC"+i+"]").val();
+                } // odp C
+                if($("[name=answerD"+i+"]").val() != undefined || $("[name=answerD"+i+"]").val() != "") {
+                    var d = $("[name=answerD"+i+"]").val();
+                } // odp D
+                if($("[name=correctA"+i+"]").is(":checked")) cA = true;
+                if($("[name=correctB"+i+"]").is(":checked")) cB = true;
+                if($("[name=correctC"+i+"]").is(":checked")) cC = true;
+                if($("[name=correctD"+i+"]").is(":checked")) cD = true;
+                var p = $("[name=pointsToGetContent"+i+"]").val(); // liczba punktow do zdobycia
+                var data = {
+                    questionClose: q,
+                    answerA: a,
+                    answerB: b,
+                    answerC: c,
+                    answerD: d,
+                    maxPoints: p,
+                    correctA: cA,
+                    correctB: cB,
+                    correctC: cC,
+                    correctD: cD
+                }
             }
+            questions.push(data);
         }
-        questions.push(data);
+        $(".step3").removeClass("stepActive");
+        $(".step4").addClass("stepActive");
+        $(".formHeader h3").html("Krok 4");
+        $(".formHeader h4").html("Podgląd dokumentu");
+        $(".formWriteQuestions").css({"display":"none"});
+        $(".checkOutDoc").css({"display":"flex"});
+        $(".pointsLeftBox").css({"display":"none"});
+        createRaport();
     }
-    console.log(questions);
-
-    $(".step3").removeClass("stepActive");
-    $(".step4").addClass("stepActive");
-    $(".formHeader h3").html("Krok 4");
-    $(".formHeader h4").html("Podgląd dokumentu");
-    $(".formWriteQuestions").css({"display":"none"});
-    $(".checkOutDoc").css({"display":"flex"});
-    createRaport();
 });
 
 function updatePoints(){
@@ -223,10 +230,47 @@ function updatePoints(){
     }
     if(isNaN(actualPoints)) actualPoints = 0;
     $(".pointsLeft").html(actualPoints+"/"+maxPkt);
+
+    return actualPoints;
 }
 
 function createRaport(){
-    console.log(questions);
-    console.log(dataOfExam);
+    console.log('generowanie raportu');
+    if(dataOfExam[0].Imie) var raportImie = 'TAK';
+    else raportImie = 'NIE';
+    if(dataOfExam[0].Nazwisko) var raportNazwisko = 'TAK';
+    else raportNazwisko = 'NIE';
+    if(dataOfExam[0].Klasa) var raportKlasa = 'TAK';
+    else raportKlasa = 'NIE';
+    $(".checkOutDoc").append("\
+        <div class='raportBlock'>\
+            Rozmiar kartki: "+dataOfExam[0].RozmiarKartki+"<br>\
+            Orientacja: "+dataOfExam[0].Orientacja+"<br>\
+            Marginesy: "+dataOfExam[0].Marginesy+"<br>\
+        </div>\
+        <div class='linijka'></div>\
+        <div class='raportBlock'>\
+            Imię: "+raportImie+"<br>\
+            Nazwisko: "+raportNazwisko+"<br>\
+            Klasa: "+raportKlasa+"<br>\
+        </div>\
+    ");
+    for(var i=1; i<n; i++){
+        // if(questions[i].questionClose != undefined || questions[i].questionClose != ""){
+        //     $(".checkOutDoc").append("\
+        //     <div class=''>\
+        //         "+questions[i].questionClose+"\
+        //     </div>\
+        // ");
+        // }
+        // else{
+        //     $(".checkOutDoc").append("\
+        //     <div class=''>\
+        //         "+questions[i].questionOpen+"\
+        //     </div>\
+        // ");
+        // }
+        console.log(questions[i-1]);
+    }
 }
 
