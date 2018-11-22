@@ -40,10 +40,10 @@ $(".formViewOfDoc").submit(function(e){
         'Data' : dataObecna,
         'Klasa' : klasa,
         'Numer' : numer,
-        'Liczba punktow' : liczbaPunktow,
-        'Max punktow' : maxPkt,
-        'Ilosc grup' : $("[name=grupy]").val(),
-        'Pytania w grupach' : $("[name=typGrupy]:checked").val()
+        'LiczbaPunktow' : liczbaPunktow,
+        'MaxPunktow' : maxPkt,
+        'IloscGrup' : $("[name=grupy]").val(),
+        'PytaniaWGrupach' : $("[name=typGrupy]:checked").val()
     }
     dataOfExam.push(data);
     console.log(dataOfExam);
@@ -242,8 +242,14 @@ function createRaport(){
     else raportNazwisko = 'NIE';
     if(dataOfExam[0].Klasa) var raportKlasa = 'TAK';
     else raportKlasa = 'NIE';
+    if(dataOfExam[0].Data) var raportData = 'TAK';
+    else raportData = 'NIE';
+    if(dataOfExam[0].Numer) var raportNumer = 'TAK';
+    else raportNumer = 'NIE';
+    if(dataOfExam[0].LiczbaPunktow) var raportPkt = dataOfExam[0].MaxPunktow;
+    else raportPkt = 'NIE';
     $(".checkOutDoc").append("\
-        <div class='raportBlock'>\
+        <div class='raportBlock firstRaportBlock'>\
             Rozmiar kartki: "+dataOfExam[0].RozmiarKartki+"<br>\
             Orientacja: "+dataOfExam[0].Orientacja+"<br>\
             Marginesy: "+dataOfExam[0].Marginesy+"<br>\
@@ -253,6 +259,9 @@ function createRaport(){
             Imię: "+raportImie+"<br>\
             Nazwisko: "+raportNazwisko+"<br>\
             Klasa: "+raportKlasa+"<br>\
+            Data: "+raportData+"<br>\
+            Numer z dziennika: "+raportNumer+"<br>\
+            Liczba puntków: "+raportPkt+"<br>\
         </div>\
     ");
     for(var i=1; i<n; i++){

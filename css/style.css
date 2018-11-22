@@ -449,6 +449,9 @@ a{
 .checkOutDoc{
   display: none;
 }
+.firstRaportBlock{
+  margin-top: 20px;
+}
 .raportBlock{
   text-align: center;
   font-size: 18px;
