@@ -286,7 +286,7 @@ function createRaport(){
             else var d = '<span>'+questions[temp].answerD+'</span>';
             $(".checkOutDoc").append("\
             <div class='raportBlock'>\
-                Treść pytania: "+questions[temp].questionClose+"<br>\
+                Treść pytania zamkniętego: "+questions[temp].questionClose+"<br>\
                 Odpowiedź A: "+a+"<br>\
                 Odpowiedź B: "+b+"<br>\
                 Odpowiedź C: "+c+"<br>\
@@ -296,10 +296,11 @@ function createRaport(){
         ");
         }
         else{
-            // console.log('jest open');
             $(".checkOutDoc").append("\
-            <div class=''>\
-                "+questions[temp].questionOpen+"\
+            <div class='raportBlock'>\
+                Treść pytania otwartego: "+questions[temp].questionOpen+"<br>\
+                Liczba linijek: "+questions[temp].answerOpen+"<br>\
+                Punkty do zdobycia: "+questions[temp].maxPoints+"\
             </div>\
         ");
         }
