@@ -21,7 +21,7 @@ $(".formViewOfDoc").submit(function(e){
     if($("[name=klasa]").is(":checked")) klasa = true;
     if($("[name=numer]").is(":checked")) numer = true;
     if($("[name=data]").is(":checked")) data = true;
-    if($("[name=liczbaPunktow]").is(":checked")){
+    if($("[name=liczbaPunktow]").is(":checked") && ($("[name=maxPkt]").val() != "" || $("[name=maxPkt]").val()>0)){
         liczbaPunktow = true;
         maxPkt = $("[name=maxPkt]").val();
         $(".pointsLeftBox").css({"display":"flex"});
