@@ -286,7 +286,7 @@ function createRaport(){
             else var d = '<span>'+questions[temp].answerD+'</span>';
             $(".checkOutDoc").append("\
             <div class='raportBlock'>\
-                Treść pytania zamkniętego: "+questions[temp].questionClose+"<br>\
+                Treść pytania zamkniętego: <span id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span><br>\
                 Odpowiedź A: "+a+"<br>\
                 Odpowiedź B: "+b+"<br>\
                 Odpowiedź C: "+c+"<br>\
@@ -326,3 +326,8 @@ function generujPDF(){
     $(".checkOutDoc").css({"display":"none"});
 };
 
+function changeQuestion(id){
+    console.log('I want to change content of question number: '+id);
+    $("#raportQ"+id).attr("onclick", "");
+    $("#raportQ"+id).html("<input type='text' class='changeQuestionInput' value='"+questions[id].questionClose+"'>");
+}
