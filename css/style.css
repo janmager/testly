@@ -453,11 +453,11 @@ a{
   margin-top: 20px;
 }
 .raportBlock{
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   line-height: 200%;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
 }
 .checkOutDoc{
   width: 100%;
@@ -474,4 +474,11 @@ a{
   margin-top: 0px;
   opacity: 0.8;
   text-align: center
+}
+.correctAnswer{
+  color: green;
+  font-weight: 600;
+}
+.correctAnswer:after{
+  content: ' <- poprawne';
 }

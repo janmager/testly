@@ -273,21 +273,37 @@ function createRaport(){
             <div class='linijka'></div>\
             <h5>Pytanie "+i+"</h5>\
         ");
-        if(questions[temp].questionClose != undefined || questions[temp].questionClose != ""){
+        // console.log('zamk'+questions[temp].questionClose);
+        // console.log('otw'+questions[temp].questionOpen);
+        if(questions[temp].questionClose != null){
+            if(questions[temp].correctA) var a = '<span class="correctAnswer">'+questions[temp].answerA+'</span>';
+            else var a = '<span>'+questions[temp].answerA+'</span>';
+            if(questions[temp].correctB) var b = '<span class="correctAnswer">'+questions[temp].answerB+'</span>';
+            else var b = '<span>'+questions[temp].answerB+'</span>';
+            if(questions[temp].correctC) var c = '<span class="correctAnswer">'+questions[temp].answerC+'</span>';
+            else var c = '<span>'+questions[temp].answerC+'</span>';
+            if(questions[temp].correctD) var d = '<span class="correctAnswer">'+questions[temp].answerD+'</span>';
+            else var d = '<span>'+questions[temp].answerD+'</span>';
             $(".checkOutDoc").append("\
-            <div class=''>\
-                "+questions[temp].questionClose+"\
+            <div class='raportBlock'>\
+                Treść pytania: "+questions[temp].questionClose+"<br>\
+                Odpowiedź A: "+a+"<br>\
+                Odpowiedź B: "+b+"<br>\
+                Odpowiedź C: "+c+"<br>\
+                Odpowiedź D: "+d+"<br>\
+                Punkty do zdobycia: "+questions[temp].maxPoints+"\
             </div>\
         ");
         }
         else{
+            // console.log('jest open');
             $(".checkOutDoc").append("\
             <div class=''>\
                 "+questions[temp].questionOpen+"\
             </div>\
         ");
         }
-        console.log(questions[temp-1]);
+        // console.log(questions[temp-1]);
     }
 }
 
