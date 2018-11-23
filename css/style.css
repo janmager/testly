@@ -238,6 +238,25 @@ h3{
   background: #2c2b44;
   color: white;
 }
+.generateDoc{
+  padding: 8px;
+  border: 2px solid black;
+  font-size: 16px;
+  color: black;
+  background: transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+  outline: none;
+  transition: 0.25s;
+  border: 2px solid #2c2b44;
+}
+.generateDoc:hover{
+  transition: 0.25s;
+  border: 2px solid #2c2b44;
+  background: #2c2b44;
+  color: white;
+}
 .otherStep2 input[type='radio']{
   margin-top: 15px;
 }
@@ -473,6 +492,7 @@ a{
   font-size: 22px;
   margin-top: 0px;
   opacity: 0.8;
+  margin-bottom: 5px;
   text-align: center
 }
 .correctAnswer{

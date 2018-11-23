@@ -306,5 +306,12 @@ function createRaport(){
         }
         // console.log(questions[temp-1]);
     }
+    $(".checkOutDoc").append("\
+        <div class='generateDoc'>Generuj plik</div>\
+    ");
 }
+
+$(".generateDoc").click(function(){
+    console.log('generowanie pliku pdf');
+})
 
