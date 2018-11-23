@@ -307,11 +307,17 @@ function createRaport(){
         // console.log(questions[temp-1]);
     }
     $(".checkOutDoc").append("\
-        <div class='generateDoc'>Generuj plik</div>\
+        <div class='generateDoc' onclick='generujPDF()'>Generuj plik</div>\
     ");
 }
 
-$(".generateDoc").click(function(){
-    console.log('generowanie pliku pdf');
-})
+function generujPDF(){
+    console.log('generowanie PDF');
+    $(".step4").removeClass("stepActive");
+    $(".step5").addClass("stepActive");
+    $(".formHeader h3").html("Krok 5");
+    $(".formHeader h4").html("Generowanie pliku");
+    $(".pdfBox").css({"display":"flex"});
+    $(".checkOutDoc").css({"display":"none"});
+};
 
