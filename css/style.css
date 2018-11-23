@@ -502,3 +502,7 @@ a{
 .correctAnswer:after{
   content: ' <- poprawne';
 }
+.typeOfQuestions{
+  display: none;
+  flex-direction: column;
+}

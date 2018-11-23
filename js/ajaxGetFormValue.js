@@ -311,6 +311,11 @@ function createRaport(){
     ");
 }
 
+function typeOfQuestionsSelect(){
+    if($("[name=grupy]").val()>1) $(".typeOfQuestions").css({"display":"flex"});
+    else $(".typeOfQuestions").css({"display":"none"});
+}
+
 function generujPDF(){
     console.log('generowanie PDF');
     $(".step4").removeClass("stepActive");

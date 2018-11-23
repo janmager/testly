@@ -102,9 +102,9 @@
                     <div class="checkboxesBox flexColumn otherStep2" style="max-width: 100%;">
                        <div class="labelBox otherStep2">
                             <label for="grupy">Ilość grup:</label>
-                            <input name="grupy" class="iloscGrup" type="number" min=1 max=5 value='1'>   
+                            <input name="grupy" class="iloscGrup" onchange="typeOfQuestionsSelect()" type="number" min=1 max=5 value='1'>   
                         </div>
-                        <div class="labelBox">
+                        <div class="labelBox typeOfQuestions">
                             <label for="typGrup">Pytania w grupach</label>
                             <div class="radioInput">
                                 <input type="radio" name="typGrupy" value="takie same" required checked>
