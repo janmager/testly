@@ -333,6 +333,7 @@ function changeQuestion(id){
         <div class='changeQuestionInputBox'>\
             <input type='text' class='changeQuestionInput' value='"+questions[id].questionClose+"'>\
             <i class='fas fa-check-circle'></i>\
+            <i class='fas fa-times-circle'></i>\
         </div>\
     ");
 }

@@ -319,6 +319,12 @@ h2{
 .raportQ{
   margin-left: 5px;
 }
+.changeQuestionInputBox i{
+  font-size: 20px;
+}
+.fa-times-circle{
+  margin-left: 5px;
+}
 .btn:hover{
   cursor: pointer;
   transition: 0.25s;
@@ -524,6 +530,6 @@ a{
   border: 1px solid #2f2d49;
   font-size: 15px;
   outline: none;
-  margin-bottom: -4px;
+  margin-bottom: -5px;
   padding: 3px;
 }
