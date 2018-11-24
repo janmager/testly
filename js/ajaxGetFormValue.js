@@ -286,12 +286,12 @@ function createRaport(){
             else var d = '<span>'+questions[temp].answerD+'</span>';
             $(".checkOutDoc").append("\
             <div class='raportBlock'>\
-                Treść pytania zamkniętego: <span id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span><br>\
-                Odpowiedź A: "+a+"<br>\
-                Odpowiedź B: "+b+"<br>\
-                Odpowiedź C: "+c+"<br>\
-                Odpowiedź D: "+d+"<br>\
-                Punkty do zdobycia: "+questions[temp].maxPoints+"\
+                <span>Treść pytania zamkniętego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span></span>\
+                <span>Odpowiedź A: "+a+"</span>\
+                <span>Odpowiedź B: "+b+"</span>\
+                <span>Odpowiedź C: "+c+"</span>\
+                <span>Odpowiedź D: "+d+"</span>\
+                <span>Punkty do zdobycia: "+questions[temp].maxPoints+"\
             </div>\
         ");
         }
@@ -329,5 +329,10 @@ function generujPDF(){
 function changeQuestion(id){
     console.log('I want to change content of question number: '+id);
     $("#raportQ"+id).attr("onclick", "");
-    $("#raportQ"+id).html("<input type='text' class='changeQuestionInput' value='"+questions[id].questionClose+"'>");
+    $("#raportQ"+id).html("\
+        <div class='changeQuestionInputBox'>\
+            <input type='text' class='changeQuestionInput' value='"+questions[id].questionClose+"'>\
+            <i class='fas fa-check-circle'></i>\
+        </div>\
+    ");
 }
