@@ -274,6 +274,7 @@ function createRaport(){
         $(".checkOutDoc").append("\
             <div class='linijka'></div>\
             <h5>Pytanie "+i+"</h5>\
+            <h6>(Aby zmienić pytanie lub odpowiedź kliknij w treść.)</h6>\
         ");
         // console.log('zamk'+questions[temp].questionClose);
         // console.log('otw'+questions[temp].questionOpen);

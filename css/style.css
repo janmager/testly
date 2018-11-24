@@ -530,3 +530,7 @@ a{
   margin-bottom: -5px;
   padding: 3px;
 }
+.checkOutDoc h6{
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
