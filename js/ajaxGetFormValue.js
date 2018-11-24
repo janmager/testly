@@ -331,8 +331,8 @@ function changeQuestion(id){
     $("#raportQ"+id).attr("onclick", "");
     $("#raportQ"+id).html("\
         <div class='changeQuestionInputBox'>\
-            <input type='text' class='changeQuestionInput' value='"+questions[id].questionClose+"'>\
-            <i class='fas fa-check-circle'></i>\
+            <input type='text' name='newQuestion"+id+"' class='changeQuestionInput' value='"+questions[id].questionClose+"'>\
+            <i class='fas fa-check-circle' onclick='changeQuestionAccept("+id+")'></i>\
             <i class='fas fa-times-circle'></i>\
         </div>\
     ");
