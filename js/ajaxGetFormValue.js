@@ -329,7 +329,6 @@ function generujPDF(){
 };
 
 function changeQuestion(id){
-    console.log('I want to change content of question number: '+id);
     $("#raportQ"+id).attr("onclick", "");
     $("#raportQ"+id).html("\
         <div class='changeQuestionInputBox' id='cQIB"+id+"'>\
@@ -344,5 +343,5 @@ function changeQuestionCloseAccept(idQ){
     console.log('changed questions : '+idQ);
     questions[idQ].questionClose = $("[name=newQuestion"+idQ+"]").val();
     $('#cQIB'+idQ).css({"display":"none"});
-    $('#raportQ'+idQ).html(questions[idQ].questionClose);
+    $('#raportQ'+idQ).html("<span onclick='changeQuestion("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionClose+"</span>");
 }
