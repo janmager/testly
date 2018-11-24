@@ -332,10 +332,17 @@ function changeQuestion(id){
     console.log('I want to change content of question number: '+id);
     $("#raportQ"+id).attr("onclick", "");
     $("#raportQ"+id).html("\
-        <div class='changeQuestionInputBox'>\
+        <div class='changeQuestionInputBox' id='cQIB"+id+"'>\
             <input type='text' name='newQuestion"+id+"' class='changeQuestionInput' value='"+questions[id].questionClose+"'>\
-            <i class='fas fa-check-circle' onclick='changeQuestionAccept("+id+")'></i>\
+            <i class='fas fa-check-circle' onclick='changeQuestionCloseAccept("+id+")'></i>\
             <i class='fas fa-times-circle'></i>\
         </div>\
     ");
+}
+
+function changeQuestionCloseAccept(idQ){
+    console.log('changed questions : '+idQ);
+    questions[idQ].questionClose = $("[name=newQuestion"+idQ+"]").val();
+    $('#cQIB'+idQ).css({"display":"none"});
+    $('#raportQ'+idQ).html(questions[idQ].questionClose);
 }
