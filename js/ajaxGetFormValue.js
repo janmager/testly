@@ -248,6 +248,8 @@ function createRaport(){
     else raportNumer = 'NIE';
     if(dataOfExam[0].LiczbaPunktow) var raportPkt = dataOfExam[0].MaxPunktow;
     else raportPkt = 'NIE';
+    if(dataOfExam[0].IloscGrup>1) var typGrup = dataOfExam[0].PytaniaWGrupach;
+    else typGrup = 'BRAK';
     $(".checkOutDoc").append("\
         <div class='raportBlock firstRaportBlock'>\
             Rozmiar kartki: "+dataOfExam[0].RozmiarKartki+"<br>\
@@ -264,7 +266,7 @@ function createRaport(){
         </div>\
         <div class='raportBlock'>\
             Ilość grup: "+dataOfExam[0].IloscGrup+"<br>\
-            Pytania w grupach: "+dataOfExam[0].PytaniaWGrupach+"<br>\
+            Pytania w grupach: "+typGrup+"<br>\
         </div>\
     ");
     for(var i=1; i<n; i++){
