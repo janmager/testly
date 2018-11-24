@@ -1,6 +1,12 @@
 # testly.
 Aplikacja do generowania sprawdzianów i kartkówek.
 
+# v.1.08
+ - Dodanie 5 kroku (generacja pliku)
+ - Dodanie opcji zmiany treści pytania po jego kliknięciu
+ 
+![Krok 4 - podgląd dokumentu](https://raw.githubusercontent.com/janmager/testly/master/img-git/step4-2.png)
+
 # v.1.07
  - Dodanie kroku 5
  - Dodanie podglądu dokumentu w kroku 4 (wykaz wszystkich wcześniej wybranych opcji)
