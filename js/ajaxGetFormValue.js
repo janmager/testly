@@ -301,9 +301,9 @@ function createRaport(){
         else{
             $(".checkOutDoc").append("\
             <div class='raportBlock'>\
-                Treść pytania otwartego: "+questions[temp].questionOpen+"<br>\
-                Liczba linijek: "+questions[temp].answerOpen+"<br>\
-                Punkty do zdobycia: "+questions[temp].maxPoints+"\
+                <span>Treść pytania otwartego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestionOpen("+temp+")'>"+questions[temp].questionOpen+"</span></span>\
+                <span>Liczba linijek: "+questions[temp].answerOpen+"</span>\
+                <span>Punkty do zdobycia: "+questions[temp].maxPoints+"</span>\
             </div>\
         ");
         }
@@ -340,9 +340,27 @@ function changeQuestion(id){
     ");
 }
 
+function changeQuestionOpen(id){
+    $("#raportQ"+id).attr("onclick", "");
+    $("#raportQ"+id).html("\
+        <div class='changeQuestionInputBox' id='cQIB"+id+"'>\
+            <input type='text' name='newQuestion"+id+"' class='changeQuestionInput' value='"+questions[id].questionOpen+"'>\
+            <i class='fas fa-check-circle' onclick='changeQuestionOpenAccept("+id+")'></i>\
+            <i class='fas fa-times-circle'></i>\
+        </div>\
+    ");
+}
+
 function changeQuestionCloseAccept(idQ){
     console.log('changed questions : '+idQ);
     questions[idQ].questionClose = $("[name=newQuestion"+idQ+"]").val();
     $('#cQIB'+idQ).css({"display":"none"});
     $('#raportQ'+idQ).html("<span onclick='changeQuestion("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionClose+"</span>");
+}
+
+function changeQuestionOpenAccept(idQ){
+    console.log('changed questions : '+idQ);
+    questions[idQ].questionOpen = $("[name=newQuestion"+idQ+"]").val();
+    $('#cQIB'+idQ).css({"display":"none"});
+    $('#raportQ'+idQ).html("<span onclick='changeQuestionOpen("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionOpen+"</span>");
 }
