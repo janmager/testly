@@ -335,7 +335,7 @@ function changeQuestion(id){
         <div class='changeQuestionInputBox' id='cQIB"+id+"'>\
             <input type='text' name='newQuestion"+id+"' class='changeQuestionInput' value='"+questions[id].questionClose+"'>\
             <i class='fas fa-check-circle' onclick='changeQuestionCloseAccept("+id+")'></i>\
-            <i class='fas fa-times-circle'></i>\
+            <i class='fas fa-times-circle' onclick='anulujEditQuestionClose("+id+")'></i>\
         </div>\
     ");
 }
@@ -346,7 +346,7 @@ function changeQuestionOpen(id){
         <div class='changeQuestionInputBox' id='cQIB"+id+"'>\
             <input type='text' name='newQuestion"+id+"' class='changeQuestionInput' value='"+questions[id].questionOpen+"'>\
             <i class='fas fa-check-circle' onclick='changeQuestionOpenAccept("+id+")'></i>\
-            <i class='fas fa-times-circle'></i>\
+            <i class='fas fa-times-circle' onclick='anulujEditQuestionOpen("+id+")'></i>\
         </div>\
     ");
 }
@@ -362,5 +362,13 @@ function changeQuestionOpenAccept(idQ){
     console.log('changed questions : '+idQ);
     questions[idQ].questionOpen = $("[name=newQuestion"+idQ+"]").val();
     $('#cQIB'+idQ).css({"display":"none"});
+    $('#raportQ'+idQ).html("<span onclick='changeQuestionOpen("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionOpen+"</span>");
+}
+
+function anulujEditQuestionClose(idQ){
+    $('#raportQ'+idQ).html("<span onclick='changeQuestion("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionClose+"</span>");
+}
+
+function anulujEditQuestionOpen(idQ){
     $('#raportQ'+idQ).html("<span onclick='changeQuestionOpen("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionOpen+"</span>");
 }
