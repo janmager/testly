@@ -290,10 +290,10 @@ function createRaport(){
             $(".checkOutDoc").append("\
             <div class='raportBlock'>\
                 <span>Treść pytania zamkniętego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span></span>\
-                <span>Odpowiedź A: "+a+"</span>\
-                <span>Odpowiedź B: "+b+"</span>\
-                <span>Odpowiedź C: "+c+"</span>\
-                <span>Odpowiedź D: "+d+"</span>\
+                <span>Odpowiedź A: <span class='raportA' id='raportA"+temp+"' onclick='editCloseQuestion(1,"+temp+")'>"+a+"</span></span>\
+                <span>Odpowiedź B: <span class='raportA' id='raportB"+temp+"' onclick='editCloseQuestion(2,"+temp+")'>"+b+"</span></span>\
+                <span>Odpowiedź C: <span class='raportA' id='raportC"+temp+"' onclick='editCloseQuestion(3,"+temp+")'>"+c+"</span></span>\
+                <span>Odpowiedź D: <span class='raportA' id='raportD"+temp+"' onclick='editCloseQuestion(4,"+temp+")'>"+d+"</span></span>\
                 <span>Punkty do zdobycia: "+questions[temp].maxPoints+"\
             </div>\
         ");
@@ -371,4 +371,25 @@ function anulujEditQuestionClose(idQ){
 
 function anulujEditQuestionOpen(idQ){
     $('#raportQ'+idQ).html("<span onclick='changeQuestionOpen("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionOpen+"</span>");
+}
+
+function editCloseQuestion(litera,idQ){
+    if(litera==1) litera = 'A';
+    else if(litera==2) litera = 'B';
+    else if(litera==3) litera = 'C';
+    else litera = 'D';
+    console.log("#raport"+litera+idQ);
+    $("#raport"+litera+idQ).attr("onclick", "");
+    var temp = 'answer'+litera;
+    $("#raport"+litera+idQ).html("\
+        <div class='changeQuestionInputBox' id='cQIB"+litera+idQ+"'>\
+            <input type='text' name='newQuestion"+litera+idQ+"' class='changeQuestionInput' value='"+questions[idQ].temp+"'>\
+            <i class='fas fa-check-circle' onclick='changeQuestionOpenAccept("+idQ+")'></i>\
+            <i class='fas fa-times-circle' onclick='anulujEditQuestionOpen("+idQ+")'></i>\
+        </div>\
+    ");
+}
+
+function anulujEditCloseQuestion(litera,idQ){
+
 }
