@@ -290,10 +290,10 @@ function createRaport(){
             $(".checkOutDoc").append("\
             <div class='raportBlock'>\
                 <span>Treść pytania zamkniętego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span></span>\
-                <span>Odpowiedź A: <span class='raportA' id='raportA"+temp+"' onclick='editCloseQuestion(1,"+temp+")'>"+a+"</span></span>\
-                <span>Odpowiedź B: <span class='raportA' id='raportB"+temp+"' onclick='editCloseQuestion(2,"+temp+")'>"+b+"</span></span>\
-                <span>Odpowiedź C: <span class='raportA' id='raportC"+temp+"' onclick='editCloseQuestion(3,"+temp+")'>"+c+"</span></span>\
-                <span>Odpowiedź D: <span class='raportA' id='raportD"+temp+"' onclick='editCloseQuestion(4,"+temp+")'>"+d+"</span></span>\
+                <span>Odpowiedź A: <span class='raportA' id='raportQA"+temp+"' onclick='editCloseQuestion(1,"+temp+")'>"+a+"</span></span>\
+                <span>Odpowiedź B: <span class='raportA' id='raportQB"+temp+"' onclick='editCloseQuestion(2,"+temp+")'>"+b+"</span></span>\
+                <span>Odpowiedź C: <span class='raportA' id='raportQC"+temp+"' onclick='editCloseQuestion(3,"+temp+")'>"+c+"</span></span>\
+                <span>Odpowiedź D: <span class='raportA' id='raportQD"+temp+"' onclick='editCloseQuestion(4,"+temp+")'>"+d+"</span></span>\
                 <span>Punkty do zdobycia: "+questions[temp].maxPoints+"\
             </div>\
         ");
@@ -327,6 +327,7 @@ function generujPDF(){
     $(".formHeader h4").html("Generowanie pliku");
     $(".pdfBox").css({"display":"flex"});
     $(".checkOutDoc").css({"display":"none"});
+    console.log(questions);
 };
 
 function changeQuestion(id){
@@ -352,14 +353,14 @@ function changeQuestionOpen(id){
 }
 
 function changeQuestionCloseAccept(idQ){
-    console.log('changed questions : '+idQ);
+    // console.log('changed questions : '+idQ);
     questions[idQ].questionClose = $("[name=newQuestion"+idQ+"]").val();
     $('#cQIB'+idQ).css({"display":"none"});
     $('#raportQ'+idQ).html("<span onclick='changeQuestion("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionClose+"</span>");
 }
 
 function changeQuestionOpenAccept(idQ){
-    console.log('changed questions : '+idQ);
+    // console.log('changed questions : '+idQ);
     questions[idQ].questionOpen = $("[name=newQuestion"+idQ+"]").val();
     $('#cQIB'+idQ).css({"display":"none"});
     $('#raportQ'+idQ).html("<span onclick='changeQuestionOpen("+idQ+")' id='raportQ'"+idQ+">"+questions[idQ].questionOpen+"</span>");
@@ -374,22 +375,82 @@ function anulujEditQuestionOpen(idQ){
 }
 
 function editCloseQuestion(litera,idQ){
-    if(litera==1) litera = 'A';
-    else if(litera==2) litera = 'B';
-    else if(litera==3) litera = 'C';
-    else litera = 'D';
-    console.log("#raport"+litera+idQ);
-    $("#raport"+litera+idQ).attr("onclick", "");
-    var temp = 'answer'+litera;
-    $("#raport"+litera+idQ).html("\
-        <div class='changeQuestionInputBox' id='cQIB"+litera+idQ+"'>\
-            <input type='text' name='newQuestion"+litera+idQ+"' class='changeQuestionInput' value='"+questions[idQ].temp+"'>\
-            <i class='fas fa-check-circle' onclick='changeQuestionOpenAccept("+idQ+")'></i>\
-            <i class='fas fa-times-circle' onclick='anulujEditQuestionOpen("+idQ+")'></i>\
+    var wynik = null;
+    var literaTemp = null;
+    if(litera==1){
+        literaTemp = 'A';
+        wynik = questions[idQ].answerA;
+    } 
+    else if(litera==2){
+        literaTemp = 'B';
+        wynik = questions[idQ].answerB;
+    } 
+    else if(litera==3){
+        literaTemp = 'C';
+        wynik = questions[idQ].answerC;
+    } 
+    else {
+        literaTemp = 'D';
+        wynik = questions[idQ].answerD;
+    } 
+    $("#raportQ"+literaTemp+idQ).attr("onclick", "");
+    $("#raportQ"+literaTemp+idQ).html("\
+        <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
+            <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
+            <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
+            <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
         </div>\
     ");
 }
 
-function anulujEditCloseQuestion(litera,idQ){
+function acceptEditCloseQuestion(litera,idQ){
+    var literaTemp = null;
+    if(litera==1){
+        literaTemp = 'A';
+        questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
+    } 
+    else if(litera==2){
+        literaTemp = 'B';
+        questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
+    } 
+    else if(litera==3){
+        literaTemp = 'C';
+        questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
+    } 
+    else {
+        literaTemp = 'D';
+        questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
+    } 
+    // console.log('changed questions : '+idQ);
+    
+}
 
+function anulujEditCloseQuestion(litera,idQ){
+    var literaTemp = null;
+    if(litera==1){
+        literaTemp = 'A';
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerA+"</span>");
+    } 
+    else if(litera==2){
+        literaTemp = 'B';
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerB+"</span>");
+    } 
+    else if(litera==3){
+        literaTemp = 'C';
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
+    } 
+    else {
+        literaTemp = 'D';
+        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
+    } 
+    // console.log('#raportQ ' + literaTemp + " " + idQ);
+    // $('#raportQ'+literaTemp+idQ).html("ooo");
 }
