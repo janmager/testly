@@ -41,21 +41,24 @@
                     <div class="checkboxesBox flexColumn" style="max-width: 80%;">
                        <div class="labelBox">
                             <label for="rozmiarKartki">Rozmiar kartki:</label>
-                            <select name="rozmiarKartki" class="nameRozmiarKartki">
+                            <select name="rozmiarKartki" class="nameRozmiarKartki" required>
+                                <option value="" disabled selected>Wybierz</option>
                                 <option value="A5">A5</option>
                                 <option value="A4">A4</option>
                             </select>
                         </div> 
                         <div class="labelBox">
                             <label for="orientacja">Orientacja:</label>
-                            <select name="orientacja">
+                            <select name="orientacja" required>
+                                <option value="" disabled selected>Wybierz</option>
                                 <option value="pionowa">Pionowa</option>
                                 <option value="pozioma">Pozioma</option>
                             </select>
                         </div> 
                         <div class="labelBox flexRow">
                             <label for="marginesy">Marginesy:</label>
-                            <select name="margines">
+                            <select name="margines" required>
+                                <option value="" disabled selected>Wybierz</option>
                                 <option value="mały">Małe</option>
                                 <option value="umiarkowane">Umiarkowane</option>
                                 <option value="duze">Duże</option>
@@ -152,9 +155,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/openFormBox.js"></script>
-    <script src="js/selectGeneratorMode.js"></script>
-    <script src="js/ajaxGetFormValue.js"></script>
-    <script src="js/questionMaker.js"></script>
+    <script src="js/allMagic.js"></script>
   </body>
 </html>

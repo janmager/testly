@@ -7,6 +7,45 @@ var dataObecna = false;
 var maxPkt = null;
 var dataOfExam = [];
 
+var home = $(".home");
+var startFormBox = $(".startCreatingFormBox");
+var btnStart = $(".open-creator");
+
+btnStart.click(function(){
+  home.css({"display":"none"});
+  startFormBox.css({"display":"flex"});
+})
+
+
+function startKart(){
+    // KROK 1
+    checked = true;
+    $(".step1").removeClass("stepActive");
+    $(".step2").addClass("stepActive");
+    $(".formHeader h3").html("Krok 2");
+    $(".formHeader h4").html("Ustawienia wizualne");
+    $(".formInFormBox").css({"display":"none"});
+    $(".kartModeForm").css({"display":"flex"});
+}
+
+// EXTRA FIELDS (pkt)
+$(".numberOfPoints").click(function(){
+    // ADD IF STATMENT WITH ATTR CHECKED
+    if(checked){
+        $(".pointsToHave").css({"display":"flex"});
+        checked = false;
+    }
+    else{
+        $(".pointsToHave").css({"display":"none"});
+        checked = true;
+    }
+    
+});
+
+$('.optionKart').click(function(){
+    startKart();
+});
+
 $(".formViewOfDoc").submit(function(e){
     e.preventDefault();
 
@@ -110,6 +149,16 @@ function generateNextQuestion(){
                     <input placeholder='Treść odpowiedzi D' name='answerD"+n+"' type='text'>\
                     <input type='checkbox' name='correctD"+n+"'>\
                 </div>\
+                <div class='odpowiedzForm'>\
+                    <label for='answerE"+n+"'>Odpowiedź E:</label>\
+                    <input placeholder='Treść odpowiedzi E' name='answerE"+n+"' type='text'>\
+                    <input type='checkbox' name='correctE"+n+"'>\
+                </div>\
+                <div class='odpowiedzForm'>\
+                    <label for='answerF"+n+"'>Odpowiedź F:</label>\
+                    <input placeholder='Treść odpowiedzi F' name='answerF"+n+"' type='text'>\
+                    <input type='checkbox' name='correctF"+n+"'>\
+                </div>\
             </div>\
             <div class='makeQuestionField pointsToGet'>\
                 <label for='pointsToGetContent"+n+"'>Liczba punktów do zdobycia:</label>\
@@ -139,8 +188,10 @@ function chooseOpen(x){
     $(".openAnswers"+x).css({"display":"none"});
     $(".rowToHave"+x).css({"display":"flex"});
     $("[name=trescPytaniaZamknietego"+x+"]").val("");
+    $("[name=trescPytaniaOtwartego"+x+"]").attr('required', true);
     $(".chooseOpen"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
     $(".chooseClose"+x).css({"background":"transparent","color":"#2f2d49"});
+
 }
 
 function chooseClose(x){
@@ -149,6 +200,7 @@ function chooseClose(x){
     $(".rowToHave"+x).css({"display":"none"});
     $(".openAnswers"+x).css({"display":"flex"});
     $(".selectOption"+x).css({"display":"none"});
+    $("[name=trescPytaniaOtwartego"+x+"]").attr('required', false);
     $("[name=trescPytaniaOtwartego"+x+"]").val("");
     $(".chooseClose"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
     $(".chooseOpen"+x).css({"background":"transparent","color":"#2f2d49"});
@@ -180,6 +232,8 @@ $(".formWriteQuestions").submit(function(e){
                 var cB = false;
                 var cC = false;
                 var cD = false;
+                var cE = false;
+                var cF = false;
                 var q = $("[name=trescPytaniaZamknietego"+i+"]").val(); // pytanie otwarte
                 if($("[name=answerA"+i+"]").val() != undefined || $("[name=answerA"+i+"]").val() != "") {
                     var a = $("[name=answerA"+i+"]").val();
@@ -193,10 +247,18 @@ $(".formWriteQuestions").submit(function(e){
                 if($("[name=answerD"+i+"]").val() != undefined || $("[name=answerD"+i+"]").val() != "") {
                     var d = $("[name=answerD"+i+"]").val();
                 } // odp D
+                if($("[name=answerE"+i+"]").val() != undefined || $("[name=answerE"+i+"]").val() != "") {
+                    var e = $("[name=answerE"+i+"]").val();
+                } // odp E
+                if($("[name=answerF"+i+"]").val() != undefined || $("[name=answerF"+i+"]").val() != "") {
+                    var f = $("[name=answerF"+i+"]").val();
+                } // odp F
                 if($("[name=correctA"+i+"]").is(":checked")) cA = true;
                 if($("[name=correctB"+i+"]").is(":checked")) cB = true;
                 if($("[name=correctC"+i+"]").is(":checked")) cC = true;
                 if($("[name=correctD"+i+"]").is(":checked")) cD = true;
+                if($("[name=correctE"+i+"]").is(":checked")) cE = true;
+                if($("[name=correctF"+i+"]").is(":checked")) cF = true;
                 var p = $("[name=pointsToGetContent"+i+"]").val(); // liczba punktow do zdobycia
                 var data = {
                     questionClose: q,
@@ -204,11 +266,15 @@ $(".formWriteQuestions").submit(function(e){
                     answerB: b,
                     answerC: c,
                     answerD: d,
+                    answerE: e,
+                    answerF: f,
                     maxPoints: p,
                     correctA: cA,
                     correctB: cB,
                     correctC: cC,
-                    correctD: cD
+                    correctD: cD,
+                    correctE: cE,
+                    correctF: cF
                 }
             }
             questions.push(data);
@@ -288,6 +354,10 @@ function createRaport(){
             else var c = '<span>'+questions[temp].answerC+'</span>';
             if(questions[temp].correctD) var d = '<span class="correctAnswer">'+questions[temp].answerD+'</span>';
             else var d = '<span>'+questions[temp].answerD+'</span>';
+            if(questions[temp].correctE) var e = '<span class="correctAnswer">'+questions[temp].answerE+'</span>';
+            else var e = '<span>'+questions[temp].answerE+'</span>';
+            if(questions[temp].correctF) var f = '<span class="correctAnswer">'+questions[temp].answerF+'</span>';
+            else var f = '<span>'+questions[temp].answerF+'</span>';
             $(".checkOutDoc").append("\
                 <div class='raportBlock'>\
                     <span>Treść pytania zamkniętego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span></span>\
@@ -295,6 +365,8 @@ function createRaport(){
                     <span id='spanAnswerB"+temp+"'>Odpowiedź B: <span class='raportA' id='raportQB"+temp+"' onclick='editCloseQuestion(2,"+temp+")'>"+b+"</span></span>\
                     <span id='spanAnswerC"+temp+"'>Odpowiedź C: <span class='raportA' id='raportQC"+temp+"' onclick='editCloseQuestion(3,"+temp+")'>"+c+"</span></span>\
                     <span id='spanAnswerD"+temp+"'>Odpowiedź D: <span class='raportA' id='raportQD"+temp+"' onclick='editCloseQuestion(4,"+temp+")'>"+d+"</span></span>\
+                    <span id='spanAnswerE"+temp+"'>Odpowiedź E: <span class='raportA' id='raportQE"+temp+"' onclick='editCloseQuestion(5,"+temp+")'>"+e+"</span></span>\
+                    <span id='spanAnswerF"+temp+"'>Odpowiedź F: <span class='raportA' id='raportQF"+temp+"' onclick='editCloseQuestion(6,"+temp+")'>"+f+"</span></span>\
                     <span>Punkty do zdobycia: "+questions[temp].maxPoints+"\
                 </div>\
             ");
@@ -309,6 +381,12 @@ function createRaport(){
             }
             if(questions[temp].answerD == undefined || questions[temp].answerD == ""){
                 $("#spanAnswerD"+temp).css({"display":"none"});
+            }
+            if(questions[temp].answerE == undefined || questions[temp].answerE == ""){
+                $("#spanAnswerE"+temp).css({"display":"none"});
+            }
+            if(questions[temp].answerF == undefined || questions[temp].answerF == ""){
+                $("#spanAnswerF"+temp).css({"display":"none"});
             }
         }
         else{
@@ -465,7 +543,7 @@ function editCloseQuestion(litera,idQ){
         ");
         }
     } 
-    else {
+    else if(litera==4){
         literaTemp = 'D';
         wynik = questions[idQ].answerD;
         $("#raportQ"+literaTemp+idQ).attr("onclick", "");
@@ -484,6 +562,56 @@ function editCloseQuestion(litera,idQ){
             <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                 <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
                 <input type='checkbox' name='correctED"+idQ+"'>\
+                <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
+                <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
+            </div>\
+        ");
+        }
+    }
+    else if(litera==5){
+        literaTemp = 'E';
+        wynik = questions[idQ].answerE;
+        $("#raportQ"+literaTemp+idQ).attr("onclick", "");
+        if(questions[idQ].correctE){
+            $("#raportQ"+literaTemp+idQ).html("\
+                <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
+                    <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
+                    <input type='checkbox' name='correctEE"+idQ+"' checked>\
+                    <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
+                    <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
+                </div>\
+            ");
+        }
+        else{
+            $("#raportQ"+literaTemp+idQ).html("\
+            <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
+                <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
+                <input type='checkbox' name='correctEE"+idQ+"'>\
+                <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
+                <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
+            </div>\
+        ");
+        }
+    } 
+    else if(litera==6){
+        literaTemp = 'F';
+        wynik = questions[idQ].answerF;
+        $("#raportQ"+literaTemp+idQ).attr("onclick", "");
+        if(questions[idQ].correctF){
+            $("#raportQ"+literaTemp+idQ).html("\
+                <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
+                    <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
+                    <input type='checkbox' name='correctEF"+idQ+"' checked>\
+                    <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
+                    <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
+                </div>\
+            ");
+        }
+        else{
+            $("#raportQ"+literaTemp+idQ).html("\
+            <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
+                <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
+                <input type='checkbox' name='correctEF"+idQ+"'>\
                 <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                 <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
             </div>\
@@ -545,7 +673,7 @@ function acceptEditCloseQuestion(litera,idQ){
             $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
         }
     } 
-    else {
+    else if(litera==4){
         literaTemp = 'D';
         if($("[name=correctED"+idQ+"]").is(":checked")){
             questions[idQ].correctD = true;
@@ -562,8 +690,40 @@ function acceptEditCloseQuestion(litera,idQ){
             $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
         }
     } 
-    // console.log('changed questions : '+idQ);
-    
+    else if(litera==5){
+        literaTemp = 'E';
+        if($("[name=correctEE"+idQ+"]").is(":checked")){
+            questions[idQ].correctE = true;
+            if(questions[idQ].answerE != '') questions[idQ].answerE = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerE = '(brak)';
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerE+"</span>");
+        }
+        else{
+            questions[idQ].correctE = false;
+            if(questions[idQ].answerE != '') questions[idQ].answerE = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerE = '(brak)';
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerE+"</span>");
+        }
+    }
+    else if(litera==6){
+        literaTemp = 'F';
+        if($("[name=correctEF"+idQ+"]").is(":checked")){
+            questions[idQ].correctF = true;
+            if(questions[idQ].answerF != '') questions[idQ].answerF = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerF = '(brak)';
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerF+"</span>");
+        }
+        else{
+            questions[idQ].correctF = false;
+            if(questions[idQ].answerF != '') questions[idQ].answerF = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerF = '(brak)';
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerF+"</span>");
+        }
+    }    
 }
 
 function anulujEditCloseQuestion(litera,idQ){

@@ -506,7 +506,8 @@ a{
   font-weight: 600;
 }
 .correctAnswer:after{
-  content: ' <- poprawne';
+  content: '<- poprawne';
+  margin-left: 5px;
 }
 .typeOfQuestions{
   display: none;
