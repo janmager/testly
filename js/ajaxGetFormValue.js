@@ -485,13 +485,15 @@ function acceptEditCloseQuestion(litera,idQ){
         literaTemp = 'A';
         if($("[name=correctEA"+idQ+"]").is(":checked")){
             questions[idQ].correctA = true;
-            questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerA == '') questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerA = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
         }
         else{
             questions[idQ].correctA = false;
-            questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerA == '') questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerA = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
         }
@@ -500,13 +502,15 @@ function acceptEditCloseQuestion(litera,idQ){
         literaTemp = 'B';
         if($("[name=correctEB"+idQ+"]").is(":checked")){
             questions[idQ].correctB = true;
-            questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerB == '') questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerB = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
         }
         else{
             questions[idQ].correctB = false;
-            questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerB == '') questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerB = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
         }
@@ -515,13 +519,15 @@ function acceptEditCloseQuestion(litera,idQ){
         literaTemp = 'C';
         if($("[name=correctEC"+idQ+"]").is(":checked")){
             questions[idQ].correctC = true;
-            questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerC == '') questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerC = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
         }
         else{
             questions[idQ].correctC = false;
-            questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerC == '') questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerC = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
         }
@@ -530,13 +536,15 @@ function acceptEditCloseQuestion(litera,idQ){
         literaTemp = 'D';
         if($("[name=correctED"+idQ+"]").is(":checked")){
             questions[idQ].correctD = true;
-            questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerD == '') questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerD = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
         }
         else{
             questions[idQ].correctD = false;
-            questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerD == '') questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            else questions[idQ].answerD = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
             $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
         }
