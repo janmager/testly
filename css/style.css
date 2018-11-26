@@ -388,7 +388,10 @@ a{
 .closeQuest{
   display: none;
 }
-.chooseOpen, .chooseClose{
+.deleteQuestion{
+  display: none;
+}
+.chooseOpen, .chooseClose, .deleteQuestion{
   margin: 10px;
 }
 .chooseOpenOrClose{
@@ -396,6 +399,22 @@ a{
   justify-content: center;
   align-items: center;
   flex-direction: row;
+}
+.questionBOX{
+  width: 100%;
+}
+.questionBOX button{
+  margin: 0 auto;
+}
+.questionBOX .nextQuestion{
+  display: inline-block;
+}
+.flexZone{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .chooseOpenOrClose div{
   padding: 8px 12px;

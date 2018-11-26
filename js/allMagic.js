@@ -103,72 +103,77 @@ var temp = null;
 
 function generateNextQuestion(){
     $(".formWriteQuestions").append("\
-        <div class='oneOptionForm'>\
-            <h5 id='nextQuestionHeader"+n+"'>Pytanie numer "+n+"</h5>\
-            <div class='borderH5'></div>\
+        <div id='question"+n+"' class='questionBOX'>\
+            <div class='oneOptionForm'>\
+                <h5 id='nextQuestionHeader"+n+"'>Pytanie numer "+n+"</h5>\
+                <div class='borderH5'></div>\
+            </div>\
+            <div class='chooseOpenOrClose'>\
+                <div class='chooseOpen"+n+" chooseOpen' onclick='chooseOpen("+n+")'>Pytanie otwarte</div>\
+                <div class='chooseClose"+n+" chooseClose' onclick='chooseClose("+n+")'>Pytanie zamknięte</div>\
+                <div class='deleteQuestion"+n+" deleteQuestion' onclick='deleteQuestion("+n+")'>Usuń pytanie</div>\
+            </div>\
+            <div class='oneQuest oneQuest"+n+"'>\
+                <div class='makeQuestionField selectOption"+n+"'>\
+                    <span>Wybierz opcję powyżej</span>\
+                </div>\
+                <div class='makeQuestionField openQuest openQuest"+n+"'>\
+                    <label for='trescPytaniaOtwartego"+n+"'>Treść pytania:</label>\
+                    <input type='text' placeholder='Podaj treść pytania otwartego' name='trescPytaniaOtwartego"+n+"'>\
+                </div>\
+                <div class='makeQuestionField closeQuest closeQuest"+n+"'>\
+                    <label for='trescPytaniaZamknietego"+n+"'>Treść pytania:</label>\
+                    <input type='text' placeholder='Podaj treść pytania zamkniętego' name='trescPytaniaZamknietego"+n+"'>\
+                </div>\
+                <div class='makeQuestionField rowsToHave rowToHave"+n+"'>\
+                    <label for='rowsInQuestion"+n+"'>Liczba linijek na odpowiedź:</label>\
+                    <input placeholder='np. 2' name='rowsInQuestion"+n+"' type='number'>\
+                </div>\
+                <div class='makeQuestionField openAnswers openAnswers"+n+"'>\
+                    <h6>Jak zostawisz pustą odpowiedź, nie będzie ona brana pod uwagę.</h6>\
+                    <div class='odpowiedzForm'>\
+                        <label for='answerA"+n+"'>Odpowiedź A:</label>\
+                        <input placeholder='Treść odpowiedzi A' name='answerA"+n+"' type='text'>\
+                        <input type='checkbox' name='correctA"+n+"'>\
+                    </div>\
+                    <div class='odpowiedzForm'>\
+                        <label for='answerB"+n+"'>Odpowiedź B:</label>\
+                        <input placeholder='Treść odpowiedzi B' name='answerB"+n+"' type='text'>\
+                        <input type='checkbox' name='correctB"+n+"'>\
+                    </div>\
+                    <div class='odpowiedzForm'>\
+                        <label for='answerC"+n+"'>Odpowiedź C:</label>\
+                        <input placeholder='Treść odpowiedzi C' name='answerC"+n+"' type='text'>\
+                        <input type='checkbox' name='correctC"+n+"'>\
+                    </div>\
+                    <div class='odpowiedzForm'>\
+                        <label for='answerD"+n+"'>Odpowiedź D:</label>\
+                        <input placeholder='Treść odpowiedzi D' name='answerD"+n+"' type='text'>\
+                        <input type='checkbox' name='correctD"+n+"'>\
+                    </div>\
+                    <div class='odpowiedzForm'>\
+                        <label for='answerE"+n+"'>Odpowiedź E:</label>\
+                        <input placeholder='Treść odpowiedzi E' name='answerE"+n+"' type='text'>\
+                        <input type='checkbox' name='correctE"+n+"'>\
+                    </div>\
+                    <div class='odpowiedzForm'>\
+                        <label for='answerF"+n+"'>Odpowiedź F:</label>\
+                        <input placeholder='Treść odpowiedzi F' name='answerF"+n+"' type='text'>\
+                        <input type='checkbox' name='correctF"+n+"'>\
+                    </div>\
+                </div>\
+                <div class='makeQuestionField pointsToGet'>\
+                    <label for='pointsToGetContent"+n+"'>Liczba punktów do zdobycia:</label>\
+                    <input placeholder='np. 4.5' name='pointsToGetContent"+n+"' onchange='updatePoints()' type='number' required>\
+                </div>\
+            </div>\
         </div>\
-        <div class='chooseOpenOrClose'>\
-            <div class='chooseOpen"+n+" chooseOpen' onclick='chooseOpen("+n+")'>Pytanie otwarte</div>\
-            <div class='chooseClose"+n+" chooseClose' onclick='chooseClose("+n+")'>Pytanie zamknięte</div>\
+        <div class='flexZone'>\
+            <div class='nextQuestion' onclick='clickedBtn()' id='nextQuestion"+n+"'>\
+                Dodaj kolejne pytanie\
+            </div>\
+            <button class='submit"+n+"' type='submit'>Przejdź dalej</button>\
         </div>\
-        <div class='oneQuest oneQuest"+n+"'>\
-            <div class='makeQuestionField selectOption"+n+"'>\
-                <span>Wybierz opcję powyżej</span>\
-            </div>\
-            <div class='makeQuestionField openQuest openQuest"+n+"'>\
-                <label for='trescPytaniaOtwartego"+n+"'>Treść pytania:</label>\
-                <input type='text' placeholder='Podaj treść pytania otwartego' name='trescPytaniaOtwartego"+n+"'>\
-            </div>\
-            <div class='makeQuestionField closeQuest closeQuest"+n+"'>\
-                <label for='trescPytaniaZamknietego"+n+"'>Treść pytania:</label>\
-                <input type='text' placeholder='Podaj treść pytania zamkniętego' name='trescPytaniaZamknietego"+n+"'>\
-            </div>\
-            <div class='makeQuestionField rowsToHave rowToHave"+n+"'>\
-                <label for='rowsInQuestion"+n+"'>Liczba linijek na odpowiedź:</label>\
-                <input placeholder='np. 2' name='rowsInQuestion"+n+"' type='number'>\
-            </div>\
-            <div class='makeQuestionField openAnswers openAnswers"+n+"'>\
-                <h6>Jak zostawisz pustą odpowiedź, nie będzie ona brana pod uwagę.</h6>\
-                <div class='odpowiedzForm'>\
-                    <label for='answerA"+n+"'>Odpowiedź A:</label>\
-                    <input placeholder='Treść odpowiedzi A' name='answerA"+n+"' type='text'>\
-                    <input type='checkbox' name='correctA"+n+"'>\
-                </div>\
-                <div class='odpowiedzForm'>\
-                    <label for='answerB"+n+"'>Odpowiedź B:</label>\
-                    <input placeholder='Treść odpowiedzi B' name='answerB"+n+"' type='text'>\
-                    <input type='checkbox' name='correctB"+n+"'>\
-                </div>\
-                <div class='odpowiedzForm'>\
-                    <label for='answerC"+n+"'>Odpowiedź C:</label>\
-                    <input placeholder='Treść odpowiedzi C' name='answerC"+n+"' type='text'>\
-                    <input type='checkbox' name='correctC"+n+"'>\
-                </div>\
-                <div class='odpowiedzForm'>\
-                    <label for='answerD"+n+"'>Odpowiedź D:</label>\
-                    <input placeholder='Treść odpowiedzi D' name='answerD"+n+"' type='text'>\
-                    <input type='checkbox' name='correctD"+n+"'>\
-                </div>\
-                <div class='odpowiedzForm'>\
-                    <label for='answerE"+n+"'>Odpowiedź E:</label>\
-                    <input placeholder='Treść odpowiedzi E' name='answerE"+n+"' type='text'>\
-                    <input type='checkbox' name='correctE"+n+"'>\
-                </div>\
-                <div class='odpowiedzForm'>\
-                    <label for='answerF"+n+"'>Odpowiedź F:</label>\
-                    <input placeholder='Treść odpowiedzi F' name='answerF"+n+"' type='text'>\
-                    <input type='checkbox' name='correctF"+n+"'>\
-                </div>\
-            </div>\
-            <div class='makeQuestionField pointsToGet'>\
-                <label for='pointsToGetContent"+n+"'>Liczba punktów do zdobycia:</label>\
-                <input placeholder='np. 4.5' name='pointsToGetContent"+n+"' onchange='updatePoints()' type='number' required>\
-            </div>\
-        </div>\
-        <div class='nextQuestion' onclick='clickedBtn()' id='nextQuestion"+n+"'>\
-            Dodaj kolejne pytanie\
-        </div>\
-        <button class='submit"+n+"' type='submit'>Przejdź dalej</button>\
         ");
     console.log("Dodano "+n+" pytanie");    
     temp = n;
@@ -189,9 +194,13 @@ function chooseOpen(x){
     $(".rowToHave"+x).css({"display":"flex"});
     $("[name=trescPytaniaZamknietego"+x+"]").val("");
     $("[name=trescPytaniaOtwartego"+x+"]").attr('required', true);
+    $("[name=trescPytaniaZamknietego"+x+"]").attr('required', false);
+    $("[name=rowsInQuestion"+x+"]").attr('required', true);
+    $("[name=answerA"+x+"]").attr('required', false);
+    $("[name=answerB"+x+"]").attr('required', false);
     $(".chooseOpen"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
     $(".chooseClose"+x).css({"background":"transparent","color":"#2f2d49"});
-
+    if(x!=1) $(".deleteQuestion"+x).css({"display":"flex"});
 }
 
 function chooseClose(x){
@@ -201,9 +210,14 @@ function chooseClose(x){
     $(".openAnswers"+x).css({"display":"flex"});
     $(".selectOption"+x).css({"display":"none"});
     $("[name=trescPytaniaOtwartego"+x+"]").attr('required', false);
+    $("[name=rowsInQuestion"+x+"]").attr('required', false);
+    $("[name=trescPytaniaZamknietego"+x+"]").attr('required', true);
+    $("[name=answerA"+x+"]").attr('required', true);
+    $("[name=answerB"+x+"]").attr('required', true);
     $("[name=trescPytaniaOtwartego"+x+"]").val("");
     $(".chooseClose"+x).css({"border":"2px solid #2f2d49","background":"#2f2d49","color":"white"});
     $(".chooseOpen"+x).css({"background":"transparent","color":"#2f2d49"});
+    if(x!=1) $(".deleteQuestion"+x).css({"display":"flex"});
 }
 
 var questions = [];
@@ -766,4 +780,8 @@ function anulujEditCloseQuestion(litera,idQ){
     } 
     // console.log('#raportQ ' + literaTemp + " " + idQ);
     // $('#raportQ'+literaTemp+idQ).html("ooo");
+}
+
+function deleteQuestion(id){
+    alert("Kiedys bedzie działać :)");
 }
