@@ -437,19 +437,39 @@ function anulujEditCloseQuestion(litera,idQ){
     var literaTemp = null;
     if(litera==1){
         literaTemp = 'A';
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerA+"</span>");
+        if(questions[idQ].correctA){
+            $('#raportQ'+literaTemp+idQ).html("<span  class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerA+"</span>");
+        }
+        else{
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerA+"</span>");
+        }
     } 
     else if(litera==2){
         literaTemp = 'B';
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerB+"</span>");
+        if(questions[idQ].correctB){
+            $('#raportQ'+literaTemp+idQ).html("<span  class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerB+"</span>");
+        }
+        else{
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerB+"</span>");
+        }
     } 
     else if(litera==3){
         literaTemp = 'C';
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
+        if(questions[idQ].correctC){
+            $('#raportQ'+literaTemp+idQ).html("<span  class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
+        }
+        else{
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
+        }
     } 
     else {
         literaTemp = 'D';
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
+        if(questions[idQ].correctD){
+            $('#raportQ'+literaTemp+idQ).html("<span  class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
+        }
+        else{
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
+        }
     } 
     // console.log('#raportQ ' + literaTemp + " " + idQ);
     // $('#raportQ'+literaTemp+idQ).html("ooo");
