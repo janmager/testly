@@ -89,6 +89,7 @@ function generateNextQuestion(){
                 <input placeholder='np. 2' name='rowsInQuestion"+n+"' type='number'>\
             </div>\
             <div class='makeQuestionField openAnswers openAnswers"+n+"'>\
+                <h6>Jak zostawisz pustą odpowiedź, nie będzie ona brana pod uwagę.</h6>\
                 <div class='odpowiedzForm'>\
                     <label for='answerA"+n+"'>Odpowiedź A:</label>\
                     <input placeholder='Treść odpowiedzi A' name='answerA"+n+"' type='text'>\
@@ -288,15 +289,27 @@ function createRaport(){
             if(questions[temp].correctD) var d = '<span class="correctAnswer">'+questions[temp].answerD+'</span>';
             else var d = '<span>'+questions[temp].answerD+'</span>';
             $(".checkOutDoc").append("\
-            <div class='raportBlock'>\
-                <span>Treść pytania zamkniętego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span></span>\
-                <span>Odpowiedź A: <span class='raportA' id='raportQA"+temp+"' onclick='editCloseQuestion(1,"+temp+")'>"+a+"</span></span>\
-                <span>Odpowiedź B: <span class='raportA' id='raportQB"+temp+"' onclick='editCloseQuestion(2,"+temp+")'>"+b+"</span></span>\
-                <span>Odpowiedź C: <span class='raportA' id='raportQC"+temp+"' onclick='editCloseQuestion(3,"+temp+")'>"+c+"</span></span>\
-                <span>Odpowiedź D: <span class='raportA' id='raportQD"+temp+"' onclick='editCloseQuestion(4,"+temp+")'>"+d+"</span></span>\
-                <span>Punkty do zdobycia: "+questions[temp].maxPoints+"\
-            </div>\
-        ");
+                <div class='raportBlock'>\
+                    <span>Treść pytania zamkniętego: <span class='raportQ' id='raportQ"+temp+"' onclick='changeQuestion("+temp+")'>"+questions[temp].questionClose+"</span></span>\
+                    <span id='spanAnswerA"+temp+"'>Odpowiedź A: <span class='raportA' id='raportQA"+temp+"' onclick='editCloseQuestion(1,"+temp+")'>"+a+"</span></span>\
+                    <span id='spanAnswerB"+temp+"'>Odpowiedź B: <span class='raportA' id='raportQB"+temp+"' onclick='editCloseQuestion(2,"+temp+")'>"+b+"</span></span>\
+                    <span id='spanAnswerC"+temp+"'>Odpowiedź C: <span class='raportA' id='raportQC"+temp+"' onclick='editCloseQuestion(3,"+temp+")'>"+c+"</span></span>\
+                    <span id='spanAnswerD"+temp+"'>Odpowiedź D: <span class='raportA' id='raportQD"+temp+"' onclick='editCloseQuestion(4,"+temp+")'>"+d+"</span></span>\
+                    <span>Punkty do zdobycia: "+questions[temp].maxPoints+"\
+                </div>\
+            ");
+            if(questions[temp].answerA == undefined || questions[temp].answerA == ""){
+                $("#spanAnswerA"+temp).css({"display":"none"});
+            }
+            if(questions[temp].answerB == undefined || questions[temp].answerB == ""){
+                $("#spanAnswerB"+temp).css({"display":"none"});
+            }
+            if(questions[temp].answerC == undefined || questions[temp].answerC == ""){
+                $("#spanAnswerC"+temp).css({"display":"none"});
+            }
+            if(questions[temp].answerD == undefined || questions[temp].answerD == ""){
+                $("#spanAnswerD"+temp).css({"display":"none"});
+            }
         }
         else{
             $(".checkOutDoc").append("\
@@ -485,68 +498,68 @@ function acceptEditCloseQuestion(litera,idQ){
         literaTemp = 'A';
         if($("[name=correctEA"+idQ+"]").is(":checked")){
             questions[idQ].correctA = true;
-            if(questions[idQ].answerA == '') questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerA != '') questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerA = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerA+"</span>");
         }
         else{
             questions[idQ].correctA = false;
-            if(questions[idQ].answerA == '') questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerA != '') questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerA = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerA+"</span>");
         }
     } 
     else if(litera==2){
         literaTemp = 'B';
         if($("[name=correctEB"+idQ+"]").is(":checked")){
             questions[idQ].correctB = true;
-            if(questions[idQ].answerB == '') questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerB != '') questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerB = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerB+"</span>");
         }
         else{
             questions[idQ].correctB = false;
-            if(questions[idQ].answerB == '') questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerB != '') questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerB = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerB+"</span>");
         }
     } 
     else if(litera==3){
         literaTemp = 'C';
         if($("[name=correctEC"+idQ+"]").is(":checked")){
             questions[idQ].correctC = true;
-            if(questions[idQ].answerC == '') questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerC != '') questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerC = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
         }
         else{
             questions[idQ].correctC = false;
-            if(questions[idQ].answerC == '') questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerC != '') questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerC = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerC+"</span>");
         }
     } 
     else {
         literaTemp = 'D';
         if($("[name=correctED"+idQ+"]").is(":checked")){
             questions[idQ].correctD = true;
-            if(questions[idQ].answerD == '') questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerD != '') questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerD = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
         }
         else{
             questions[idQ].correctD = false;
-            if(questions[idQ].answerD == '') questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            if(questions[idQ].answerD != '') questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
             else questions[idQ].answerD = '(brak)';
             $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ"+literaTemp+idQ+"'>"+questions[idQ].answerD+"</span>");
         }
     } 
     // console.log('changed questions : '+idQ);
