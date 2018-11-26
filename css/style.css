@@ -534,3 +534,6 @@ a{
   margin-bottom: 10px;
   opacity: 0.6;
 }
+.changeQuestionInputBox input{
+  margin-bottom: 3px;
+}
