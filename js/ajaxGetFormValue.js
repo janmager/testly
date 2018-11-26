@@ -385,7 +385,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
                 <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                     <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                    <input type='checkbox' name='correctA"+idQ+"' checked>\
+                    <input type='checkbox' name='correctEA"+idQ+"' checked>\
                     <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                     <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
                 </div>\
@@ -395,7 +395,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
             <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                 <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                <input type='checkbox' name='correctA"+idQ+"'>\
+                <input type='checkbox' name='correctEA"+idQ+"'>\
                 <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                 <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
             </div>\
@@ -410,7 +410,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
                 <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                     <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                    <input type='checkbox' name='correctB"+idQ+"' checked>\
+                    <input type='checkbox' name='correctEB"+idQ+"' checked>\
                     <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                     <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
                 </div>\
@@ -420,7 +420,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
             <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                 <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                <input type='checkbox' name='correctB"+idQ+"'>\
+                <input type='checkbox' name='correctEB"+idQ+"'>\
                 <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                 <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
             </div>\
@@ -435,7 +435,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
                 <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                     <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                    <input type='checkbox' name='correctC"+idQ+"' checked>\
+                    <input type='checkbox' name='correctEC"+idQ+"' checked>\
                     <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                     <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
                 </div>\
@@ -445,7 +445,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
             <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                 <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                <input type='checkbox' name='correctC"+idQ+"'>\
+                <input type='checkbox' name='correctEC"+idQ+"'>\
                 <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                 <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
             </div>\
@@ -460,7 +460,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
                 <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                     <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                    <input type='checkbox' name='correctD"+idQ+"' checked>\
+                    <input type='checkbox' name='correctED"+idQ+"' checked>\
                     <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                     <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
                 </div>\
@@ -470,7 +470,7 @@ function editCloseQuestion(litera,idQ){
             $("#raportQ"+literaTemp+idQ).html("\
             <div class='changeQuestionInputBox' id='cQIB"+literaTemp+idQ+"'>\
                 <input type='text' name='newQuestion"+literaTemp+idQ+"' class='changeQuestionInput' value='"+wynik+"'>\
-                <input type='checkbox' name='correctD"+idQ+"'>\
+                <input type='checkbox' name='correctED"+idQ+"'>\
                 <i class='fas fa-check-circle' onclick='acceptEditCloseQuestion("+litera+","+idQ+")'></i>\
                 <i class='fas fa-times-circle' onclick='anulujEditCloseQuestion("+litera+","+idQ+")'></i>\
             </div>\
@@ -483,27 +483,63 @@ function acceptEditCloseQuestion(litera,idQ){
     var literaTemp = null;
     if(litera==1){
         literaTemp = 'A';
-        questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
-        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
+        if($("[name=correctEA"+idQ+"]").is(":checked")){
+            questions[idQ].correctA = true;
+            questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
+        }
+        else{
+            questions[idQ].correctA = false;
+            questions[idQ].answerA = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerA+"</span>");
+        }
     } 
     else if(litera==2){
         literaTemp = 'B';
-        questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
-        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
+        if($("[name=correctEB"+idQ+"]").is(":checked")){
+            questions[idQ].correctB = true;
+            questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
+        }
+        else{
+            questions[idQ].correctB = false;
+            questions[idQ].answerB = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerB+"</span>");
+        }
     } 
     else if(litera==3){
         literaTemp = 'C';
-        questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
-        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
+        if($("[name=correctEC"+idQ+"]").is(":checked")){
+            questions[idQ].correctC = true;
+            questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
+        }
+        else{
+            questions[idQ].correctC = false;
+            questions[idQ].answerC = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerC+"</span>");
+        }
     } 
     else {
         literaTemp = 'D';
-        questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
-        $('#cQIB'+literaTemp+idQ).css({"display":"none"});
-        $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
+        if($("[name=correctED"+idQ+"]").is(":checked")){
+            questions[idQ].correctD = true;
+            questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span class='correctAnswer' onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
+        }
+        else{
+            questions[idQ].correctD = false;
+            questions[idQ].answerD = $("[name=newQuestion"+literaTemp+idQ+"]").val();
+            $('#cQIB'+literaTemp+idQ).css({"display":"none"});
+            $('#raportQ'+literaTemp+idQ).html("<span onclick='editCloseQuestion("+litera+","+idQ+")' id='raportQ'"+literaTemp+idQ+">"+questions[idQ].answerD+"</span>");
+        }
     } 
     // console.log('changed questions : '+idQ);
     
