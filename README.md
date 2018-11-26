@@ -1,6 +1,16 @@
 # testly.
 Aplikacja do generowania sprawdzianów i kartkówek.
 
+# v.1.09
+ - Dodano przycisk potwierdzenia i anulacji pytania
+ - Dodano mozliwość edycji treści pytania jak i odpowiedzi
+ - Dodano mozliwość zmiany poprawnej odpowiedzi w pytaniach zamkniętych
+ - Dodano atrybut 'required' w kroku 2, nie mozna na oślep wypełnić formularza
+ - Dodano mozliwosc 6 odpowiedzi zamkniętych (E i F)
+ - Dodano system, który wykrywa puste odpowiedzi i ich nie pokazuje w dalszych krokach
+ 
+![Krok 4 - edycja treści](https://raw.githubusercontent.com/janmager/testly/master/img-git/step4-3.png)
+
 # v.1.08
  - Dodanie 5 kroku (generacja pliku)
  - Dodanie opcji zmiany treści pytania po jego kliknięciu
