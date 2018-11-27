@@ -532,6 +532,7 @@ function editCloseQuestion(litera,idQ){
         ");
         }
     } 
+    //oomom
     else if(litera==3){
         literaTemp = 'C';
         wynik = questions[idQ].answerC;
