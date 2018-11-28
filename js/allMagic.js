@@ -786,13 +786,21 @@ function generujPDF(){
     $(".checkOutDoc").css({"display":"none"});
     console.log(questions);
 
-    // GENEROWANIE PDFA
+    // GENEROWANIE PDFa
+
+    // VARIABLES PDFa
     var pdfOrientacja = null; 
     if(dataOfExam[0].Orientacja == "pionowa") pdfOrientacja = 'p';
     else pdfOrientacja = 'l';
-    var doc = new jsPDF({
-        orientation: pdfOrientacja
-    });
-    doc.text(questions[0].questionOpen, 10, 10);
-    doc.save('a4.pdf');
+
+    var docDefinition = { content: questions[0].questionOpen };
+    
+     // open the PDF in a new window
+    // pdfMake.createPdf(docDefinition).open();
+
+    // print the PDF
+    // pdfMake.createPdf(docDefinition).print();
+
+    // download the PDF
+    pdfMake.createPdf(docDefinition).download('twojaKartkowka.pdf');
 };
