@@ -424,17 +424,6 @@ function typeOfQuestionsSelect(){
     else $(".typeOfQuestions").css({"display":"none"});
 }
 
-function generujPDF(){
-    console.log('generowanie PDF');
-    $(".step4").removeClass("stepActive");
-    $(".step5").addClass("stepActive");
-    $(".formHeader h3").html("Krok 5");
-    $(".formHeader h4").html("Generowanie pliku");
-    $(".pdfBox").css({"display":"flex"});
-    $(".checkOutDoc").css({"display":"none"});
-    console.log(questions);
-};
-
 function changeQuestion(id){
     $("#raportQ"+id).attr("onclick", "");
     $("#raportQ"+id).html("\
@@ -786,3 +775,24 @@ function anulujEditCloseQuestion(litera,idQ){
 function deleteQuestion(id){
     alert("Kiedys bedzie działać :)");
 }
+
+function generujPDF(){
+    console.log('generowanie PDF');
+    $(".step4").removeClass("stepActive");
+    $(".step5").addClass("stepActive");
+    $(".formHeader h3").html("Krok 5");
+    $(".formHeader h4").html("Generowanie pliku");
+    $(".pdfBox").css({"display":"flex"});
+    $(".checkOutDoc").css({"display":"none"});
+    console.log(questions);
+
+    // GENEROWANIE PDFA
+    var pdfOrientacja = null; 
+    if(dataOfExam[0].Orientacja == "pionowa") pdfOrientacja = 'p';
+    else pdfOrientacja = 'l';
+    var doc = new jsPDF({
+        orientation: pdfOrientacja
+    });
+    doc.text(questions[0].questionOpen, 10, 10);
+    doc.save('a4.pdf');
+};
