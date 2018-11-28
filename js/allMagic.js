@@ -46,11 +46,20 @@ $('.optionKart').click(function(){
     startKart();
 });
 
+$('.numberOfPoints').click(function(){
+    if($("[name=liczbaPunktow]").is(":checked")){
+        $("[name=maxPkt").attr('required', true);
+    }
+    else{
+        $("[name=maxPkt").attr('required', false);
+    }
+});
+
 $(".formViewOfDoc").submit(function(e){
     e.preventDefault();
 
     dataOfExam = [];
-
+    
     // console.log("Rozmiar: ");
     // GET VALUE OF INPUT FROM NAME
     // console.log($("input[name=rozmiarKartki]").val());
@@ -60,7 +69,7 @@ $(".formViewOfDoc").submit(function(e){
     if($("[name=klasa]").is(":checked")) klasa = true;
     if($("[name=numer]").is(":checked")) numer = true;
     if($("[name=data]").is(":checked")) data = true;
-    if($("[name=liczbaPunktow]").is(":checked") && ($("[name=maxPkt]").val() != "" || $("[name=maxPkt]").val()>0)){
+    if($("[name=liczbaPunktow]").is(":checked")){
         liczbaPunktow = true;
         maxPkt = $("[name=maxPkt]").val();
         $(".pointsLeftBox").css({"display":"flex"});
@@ -68,7 +77,6 @@ $(".formViewOfDoc").submit(function(e){
     else{
         maxPkt = 9999;
     }
-    
 
     var data = {    
         'RozmiarKartki' : $("[name=rozmiarKartki]").val(),
@@ -793,7 +801,69 @@ function generujPDF(){
     if(dataOfExam[0].Orientacja == "pionowa") pdfOrientacja = 'p';
     else pdfOrientacja = 'l';
 
-    var docDefinition = { content: questions[0].questionOpen };
+    var pdfImie = null;
+    if(dataOfExam[0].Imie) pdfImie = 'Imię: .............................';
+    else pdfImie = '';
+
+    var pdfPkt = null;
+    if(dataOfExam[0].LiczbaPunktow) pdfPkt = 'Punkty: ......../'+dataOfExam[0].MaxPunktow;
+    else pdfPkt = '';
+
+    var pdfNazwisko = null;
+    if(dataOfExam[0].Nazwisko) pdfNazwisko = 'Nazwisko: .............................';
+    else pdfNazwisko = '';
+
+    var pdfKlasa = null;
+    if(dataOfExam[0].Klasa) pdfKlasa = 'Klasa: .............................';
+    else pdfKlasa = '';
+
+    var pdfData = null;
+    if(dataOfExam[0].Data) pdfData = 'Data: .............................';
+    else pdfData = '';
+
+    var pdfNumer = null;
+    if(dataOfExam[0].Numer) pdfNumer = 'Numer z dziennika: ....................';
+    else pdfNumer = '';
+    
+    var docDefinition = {
+        content: [
+            {
+              columns: [
+                {
+                  width: '*',
+                  text: pdfImie
+                },
+                {
+                  width: '*',
+                  text: pdfNazwisko
+                },
+                {
+                  width: '*',
+                  text: pdfKlasa
+                }
+              ],
+              columnGap: 10
+            },
+            "\n",
+            {
+                columns: [
+                  {
+                    width: '*',
+                    text: pdfData
+                  },
+                  {
+                    width: '*',
+                    text: pdfNumer
+                  },
+                  {
+                    width: '*',
+                    text: pdfPkt
+                  }
+                ],
+                columnGap: 10
+              },
+          ]
+      };
     
      // open the PDF in a new window
     // pdfMake.createPdf(docDefinition).open();
