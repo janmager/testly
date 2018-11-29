@@ -84,7 +84,7 @@ $(".formViewOfDoc").submit(function(e){
         'Marginesy' : $("[name=margines]").val(),
         'Imie' : imie,
         'Nazwisko' : nazwisko,
-        'Data' : dataObecna,
+        'Data' : data,
         'Klasa' : klasa,
         'Numer' : numer,
         'LiczbaPunktow' : liczbaPunktow,
