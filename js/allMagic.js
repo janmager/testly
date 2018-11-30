@@ -187,7 +187,7 @@ function generateNextQuestion(){
     temp = n;
     n++;
 }
-
+//ddd
 function clickedBtn(){
     $("#nextQuestion"+temp).css({"display":"none"});
     $(".submit"+temp).css({"display":"none"});
