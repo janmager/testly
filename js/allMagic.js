@@ -802,8 +802,8 @@ function generujPDF(){
     var newLine = '\n\n';
 
     var pdfOrientacja = null; 
-    if(dataOfExam[0].Orientacja == "pionowa") pdfOrientacja = 'p';
-    else pdfOrientacja = 'l';
+    if(dataOfExam[0].Orientacja == "pionowa") pdfOrientacja = 'portait';
+    else pdfOrientacja = 'landscape';
 
     var pdfImie = null;
     if(dataOfExam[0].Imie){
@@ -860,10 +860,21 @@ function generujPDF(){
     else pdfNumer = '';
     
     var docDefinition = {
+        pageOrientation: pdfOrientacja,
+        pageSize: dataOfExam[0].RozmiarKartki,
         content: [
-            pdfHeader
-          ]
-      };
+            {
+                text: pdfHeader,
+                style: 'HeaderStyle'                
+            }
+        ],
+        styles: {
+            HeaderStyle: {
+                fontSize: 12,
+
+            }
+        }
+    };
     
      // open the PDF in a new window
     // pdfMake.createPdf(docDefinition).open();
