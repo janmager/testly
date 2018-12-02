@@ -797,71 +797,71 @@ function generujPDF(){
     // GENEROWANIE PDFa
 
     // VARIABLES PDFa
+    var pdfHeader = '';
+    var lineCounter = 0;
+    var newLine = '\n\n';
+
     var pdfOrientacja = null; 
     if(dataOfExam[0].Orientacja == "pionowa") pdfOrientacja = 'p';
     else pdfOrientacja = 'l';
 
     var pdfImie = null;
-    if(dataOfExam[0].Imie) pdfImie = 'Imię: .............................';
+    if(dataOfExam[0].Imie){
+        if(lineCounter==3) pdfHeader += newLine;
+        pdfImie = 'Imię: .............................        ';
+        pdfHeader += pdfImie;
+        lineCounter++;
+    }
     else pdfImie = '';
 
-    var pdfPkt = null;
-    if(dataOfExam[0].LiczbaPunktow) pdfPkt = 'Punkty: ......../'+dataOfExam[0].MaxPunktow;
-    else pdfPkt = '';
-
     var pdfNazwisko = null;
-    if(dataOfExam[0].Nazwisko) pdfNazwisko = 'Nazwisko: .............................';
+    if(dataOfExam[0].Nazwisko){
+        if(lineCounter==3) pdfHeader += newLine;
+        pdfNazwisko = 'Nazwisko: .............................        ';
+        pdfHeader += pdfNazwisko;
+        lineCounter++;
+    } 
     else pdfNazwisko = '';
 
     var pdfKlasa = null;
-    if(dataOfExam[0].Klasa) pdfKlasa = 'Klasa: .............................';
+    if(dataOfExam[0].Klasa){
+        if(lineCounter==3) pdfHeader += newLine;
+        pdfKlasa = 'Klasa: .............................        ';
+        pdfHeader += pdfKlasa;
+        lineCounter++;
+    } 
     else pdfKlasa = '';
 
+    var pdfPkt = null;
+    if(dataOfExam[0].LiczbaPunktow){
+        if(lineCounter==3) pdfHeader += newLine;
+        pdfPkt = 'Punkty: ......../'+dataOfExam[0].MaxPunktow+"        ";
+        pdfHeader += pdfPkt;
+        lineCounter++;
+    } 
+    else pdfPkt = '';
+
     var pdfData = null;
-    if(dataOfExam[0].Data) pdfData = 'Data: .............................';
+    if(dataOfExam[0].Data){
+        if(lineCounter==3) pdfHeader += newLine;
+        pdfData = 'Data: .............................        ';
+        pdfHeader += pdfData;
+        lineCounter++;
+    } 
     else pdfData = '';
 
     var pdfNumer = null;
-    if(dataOfExam[0].Numer) pdfNumer = 'Numer z dziennika: ....................';
+    if(dataOfExam[0].Numer){
+        if(lineCounter==3) pdfHeader += newLine;
+        pdfNumer = 'Numer z dziennika: ....................        ';
+        pdfHeader += pdfNumer;
+        lineCounter++;
+    } 
     else pdfNumer = '';
     
     var docDefinition = {
         content: [
-            {
-              columns: [
-                {
-                  width: '*',
-                  text: pdfImie
-                },
-                {
-                  width: '*',
-                  text: pdfNazwisko
-                },
-                {
-                  width: '*',
-                  text: pdfKlasa
-                }
-              ],
-              columnGap: 10
-            },
-            "\n",
-            {
-                columns: [
-                  {
-                    width: '*',
-                    text: pdfData
-                  },
-                  {
-                    width: '*',
-                    text: pdfNumer
-                  },
-                  {
-                    width: '*',
-                    text: pdfPkt
-                  }
-                ],
-                columnGap: 10
-              },
+            pdfHeader
           ]
       };
     
